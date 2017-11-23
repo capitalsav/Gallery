@@ -1,0 +1,35 @@
+<%= form_for @image, html: {multipart: true } do |form| %>
+    <% if @image.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@image.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+          <ul>
+            <% @image.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :category_id %><br>
+      <%= form.number_field :category_id %>
+    </div>
+    <div class="field">
+      <%= form.label :image %><br>
+      <%= form.file_field :image %>
+      <% if form.object.image? %>
+          <%= image_tag form.object.image.thumb.url %>
+          <%= form.label :remove_image %>
+          <%= form.check_box :remove_image %>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>
