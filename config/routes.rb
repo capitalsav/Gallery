@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root  'static_pages#home'
   resources :categories, only: [:new]
   resources :images
   match '/categories/:name', to: 'categories#show_images', via: 'get'
