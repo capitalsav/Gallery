@@ -33,8 +33,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# gem carrierwave to upload images
 gem 'carrierwave'
+
+# gem mini_magick to resize uploaded images
 gem 'mini_magick'
+
+# gem for user authorization
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
