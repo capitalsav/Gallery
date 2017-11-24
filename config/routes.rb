@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    confirmations: 'users/confirmations'
+  }
+
   root  'static_pages#home'
   resources :categories, only: [:new]
   resources :images
