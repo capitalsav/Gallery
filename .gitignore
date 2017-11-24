@@ -23,3 +23,6 @@
 
 #Ignore secret token
 .secret
+
+#Ignore uploaded images
+/public/uploads
