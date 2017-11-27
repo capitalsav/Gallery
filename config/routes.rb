@@ -2,9 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  devise_scope :user do
+    match '/profile', to: 'users/registrations#profile', via: 'get'
+  end
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    confirmations: 'users/confirmations'
+    confirmations: 'users/confirmations',
+    registrations: 'users/registrations'
   }
 
   root  'static_pages#home'
