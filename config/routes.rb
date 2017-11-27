@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
 
   root  'static_pages#home'
-  resources :categories, only: [:new]
+  resources :categories, only: [:new, :index]
   resources :images, only: [:new, :edit, :create, :update, :destroy]
   match '/categories/:name', to: 'categories#show_images', via: 'get'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
