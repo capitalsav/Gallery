@@ -65,6 +65,15 @@ class CategoriesController < ApplicationController
     @images = Category.find_by_name(params[:name]).images
   end
 
+  def show_one_image
+    images = Category.find_by_name(params[:name]).images
+    images.each do |image|
+      if image.id == params[:image_id].to_i
+        @image = image
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
