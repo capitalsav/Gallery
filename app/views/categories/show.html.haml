@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  = @images.each do |image|
+    = image_tag "#{image.image}"
+= link_to 'Edit', edit_category_path(@category)
+|
+= link_to 'Back', categories_path

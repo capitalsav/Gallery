@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Image:
+  = @image.image
+%p
+  %strong Category:
+  = @image.category_id
+%p
+  %strong Image:
+  = image_tag "#{@image.image}"
+= link_to 'Edit', edit_image_path(@image)
+|
+= link_to 'Back', images_path
