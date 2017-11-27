@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_admin_user!, only: [:edit, :update, :destroy]
 
   # GET /images
   # GET /images.json
