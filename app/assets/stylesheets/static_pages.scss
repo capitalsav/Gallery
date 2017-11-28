@@ -1,3 +1,32 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*home page*/
+
+@media (max-width: 500px) {
+  .test img{
+    width: auto;
+    height: 40vh !important;
+    width: 100% !important;
+    max-height: 40vh;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 1023px) {
+  .test img{
+    width: auto;
+    height: 50vh !important;
+    width: 100% !important;
+    max-height: 50vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .test img{
+    width: auto;
+    height: 80vh !important;
+    width: 100% !important;
+    max-height: 80vh;
+  }
+}

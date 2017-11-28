@@ -7,8 +7,13 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
     = render 'layouts/header'
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    .container-fluid
+      - flash.each do |key, value|
+        %div{:class => "alert alert-#{key}"}= value
+      = yield
+      = render 'layouts/footer'
+      -#%p.notice= notice
+      -#%p.alert= alert
