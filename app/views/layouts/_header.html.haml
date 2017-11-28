@@ -11,7 +11,7 @@
       %ul.nav.navbar-nav
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            Categories
+            Popular Categories
             %span.caret
           %ul.dropdown-menu
             %li
@@ -31,15 +31,9 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
-            = link_to('Logout', destroy_user_session_path, method: :delete)
+            = link_to '<i class="glyphicon glyphicon-log-out"></i> Log out'.html_safe, destroy_user_session_path, method: :delete
         - else
           %li
-            = link_to('Login', new_user_session_path)
-        -#%li
-        -#  = link_to signup_path do
-        -#    %span.glyphicon.glyphicon-user
-        -#    Sign Up
-        -#%li
-        -#  = link_to signin_path do
-        -#    %span.glyphicon.glyphicon-log-in
-        -#    Login
+            = link_to '<i class="glyphicon glyphicon-user"></i> SignUp'.html_safe, new_user_registration_path
+          %li
+            = link_to '<i class="glyphicon glyphicon-log-in"></i> Login'.html_safe, new_user_session_path
