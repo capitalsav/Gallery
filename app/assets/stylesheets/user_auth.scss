@@ -1,0 +1,77 @@
+.main-sign-up-row {
+  min-height: 80vh;
+}
+
+.auth-form-container {
+  padding-top: 30px;
+  //margin-top: 5%;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.sign-up-input {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: none;
+  height: 45px;
+  background: #EEEEEE;
+  padding-left: 10px;
+}
+
+.button-sign-up {
+  border-radius: 0 !important;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+@media (max-width: 460px) {
+  .auth-form-container-size {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 10%;
+  }
+}
+
+@media (min-width: 461px) and (max-width: 767px) {
+  .auth-form-container-size {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .auth-form-container-size {
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .auth-form-container-size {
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .auth-form-container-size {
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+  }
+}
