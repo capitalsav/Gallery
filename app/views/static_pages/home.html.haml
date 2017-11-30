@@ -6,7 +6,7 @@
         %li.if.n{:class => "\#{'active' == 0}", "data-slide-to" => "\#{n}", "data-target" => "#MyCarousel"}
     .carousel-inner{:role => "listbox"}
       .item.active.test
-        = image_tag @carousel_images.first.image
+        = image_tag @carousel_images.first.image, alt: 'default.jpg'
       - @carousel_images.drop(1).each do |image|
         .item.test
           = image_tag image.image
