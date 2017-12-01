@@ -6,7 +6,8 @@ class StaticPagesController < ApplicationController
       @carousel_images = {:images_uploaded => uploaded, :images => images_array}
     else
       uploaded = false
-      static_image = "/assets/default.jpg"
+      # static_image = "/assets/default.jpg"
+      static_image = "default.jpg"
       @carousel_images = {:images_uploaded => uploaded, :images => static_image}
     end
   end
