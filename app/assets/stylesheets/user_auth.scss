@@ -1,15 +1,16 @@
-.main-sign-up-row {
+/*SignUp*/
+
+.main-auth-row {
   min-height: 80vh;
 }
 
 .auth-form-container {
   padding-top: 30px;
-  //margin-top: 5%;
   background-color: white;
   margin-bottom: 20px;
 }
 
-.sign-up-input {
+.auth-input {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
@@ -21,13 +22,26 @@
   padding-left: 10px;
 }
 
-.button-sign-up {
+.button-auth {
   border-radius: 0 !important;
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 10px;
   height: 45px;
+}
+
+.auth-users-shared-links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.auth-users-shared-links a{
+  color: #76b852;
+}
+
+.auth-form-bottom-empty-space {
+  height: 5px;
 }
 
 @media (max-width: 460px) {
