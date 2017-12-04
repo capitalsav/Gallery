@@ -28,6 +28,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        #TODO check error NoMethodError in CategoriesController#create undefined method `category_url' for #<CategoriesController:0x007f26943a3a88> Did you mean? categories_url
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
