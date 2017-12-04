@@ -6,6 +6,17 @@
   %strong Category:
   = @image.category_id
 %p
+  %strong Like
+  #follow_form
+  - if current_user.likes?(@image)
+    = form_for(current_user.likes.find_by(image_id: @image.id), html: { method: :delete }, remote: true) do |f|
+      = f.hidden_field :image_id
+      = f.submit "Unlike", class: "btn btn-large"
+  - else
+    = form_for(current_user.likes.build(image_id: @image.id), remote: true) do |f|
+      = f.hidden_field :image_id
+      = f.submit "Like", class: "btn btn-large btn-primary"
+%p
   %strong Image:
   = image_tag "#{@image.image}"
 = link_to 'Edit', edit_image_path(@image)

@@ -1,0 +1,3 @@
+= form_for(current_user.likes.build(image_id: @image.id), remote: true) do |f|
+  = f.hidden_field :image_id
+  = f.submit "Like", class: "btn btn-large btn-primary"
