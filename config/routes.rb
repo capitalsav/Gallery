@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'likes/create'
-
-  get 'likes/destroy'
+  # get 'likes/create'
+  #
+  # get 'likes/destroy'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
