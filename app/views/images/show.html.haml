@@ -9,14 +9,9 @@
   %strong Like
   #like_form
   - if current_user.likes?(@image)
-    -#= link_to "Unlike", likes_destroy_path(image_id: @image.id), method: :delete, remote: true
-    = link_to("UnLike", :controller => "likes", :action => "destroy", :image_id => @image.id, method: :delete, remote: true)
+    = render "likes/unlike"
   - else
-    = link_to("Like", :controller => "likes", :action => "create", :image_id => @image.id, method: :post, remote: true)
-    -#= link_to "Like", likes_create_path(image_id: @image.id), method: :post, remote: true
-    -#= form_for(current_user.likes.build(image_id: @image.id), remote: true) do |f|
-    -#  = f.hidden_field :image_id
-    -#  = f.submit "Like", class: "btn btn-large btn-primary"
+    = render "likes/like"
 %p
   %strong Image:
   = image_tag "#{@image.image}"

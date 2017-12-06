@@ -1,3 +1,1 @@
-= form_for(current_user.likes.find_by(image_id: @image.id), html: { method: :delete }, remote: true) do |f|
-  = f.hidden_field :image_id
-  = f.submit "Unlike", class: "btn btn-large"
+= link_to "UnLike", image_like_path(@image.id, @like.id), :method => :delete, remote: true

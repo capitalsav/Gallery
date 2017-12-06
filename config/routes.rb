@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 
   root  'static_pages#home'
   resources :categories, only: [:new, :index, :create]
-  resources :images, only: [:new, :edit, :create, :update, :destroy, :index, :show]
-  resources :likes, only: [:create, :destroy]
+  resources :images, only: [:new, :edit, :create, :update, :destroy, :index, :show] do
+    resources :likes, only: [:create, :destroy]
+  end
   match '/categories/:name', to: 'categories#show_images', via: 'get'
   match '/categories/:name/:image_id', to: 'categories#show_one_image', via: 'get'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -12,6 +12,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @like = @image.likes.find_by(user_id: current_user.id)
   end
 
   # GET /images/new

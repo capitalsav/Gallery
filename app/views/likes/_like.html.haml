@@ -1,3 +1,1 @@
-= form_for(current_user.likes.build(image_id: @image.id), remote: true) do |f|
-  = f.hidden_field :image_id
-  = f.submit "Like", class: "btn btn-large btn-primary"
+= link_to "Like", image_likes_path(@image), :method => :post, remote: true
