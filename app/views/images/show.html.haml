@@ -15,6 +15,12 @@
 %p
   %strong Image:
   = image_tag "#{@image.image}"
+%p
+  - @comments.each do |comment|
+    - comment.text
+  -#= form_for(current_user.comments.build(@image.id), html: { method: :post }, remote: true) do |f|
+  -#  = f.text_field :text
+  -#  = f.submit "Comment", class: "btn btn-large"
 = link_to 'Edit', edit_image_path(@image)
 |
 = link_to 'Back', images_path

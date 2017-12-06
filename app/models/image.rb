@@ -2,6 +2,7 @@ class Image < ApplicationRecord
   belongs_to :category
   has_many :likes, foreign_key: "image_id", dependent: :destroy
   has_many :liking_users, :through => :likes, :source => :user
+  has_many :comments, foreign_key: "image_id", dependent: :destroy
   mount_uploader :image, ImageUploader
   validates_processing_of :image
   validate :image_size_validation
