@@ -1,4 +1,5 @@
-- @comments.each do |comment|
-  %p
-    = comment.text
-  %br
+#comments
+  - @comments.each do |comment|
+    %p
+      = comment.text
+    %br

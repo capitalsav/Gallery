@@ -7,17 +7,12 @@
   = @image.category_id
 %p
   %strong Like
-  #like_form
-    - if current_user.likes?(@image)
-      = render "likes/unlike"
-    - else
-      = render "likes/like"
+  = render "likes/like_form"
 %p
   %strong Image:
   = image_tag "#{@image.image}"
 %p
-  %p#comments
-    = render "comments/comments"
+  = render "comments/comments"
   = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
     = f.text_field :text
     = f.submit "Comment", class: "btn btn-large"

@@ -1,5 +1,5 @@
-#follow_form
+#like_form
   - if current_user.likes?(@image)
-    = render 'likes/unlike'
+    = render "likes/unlike"
   - else
-    = render 'likes/like'
+    = render "likes/like"

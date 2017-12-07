@@ -71,6 +71,7 @@ class CategoriesController < ApplicationController
     images.each do |image|
       if image.id == params[:image_id].to_i
         @image = image
+        @comments = @image.comments.all
       end
     end
   end

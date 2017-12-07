@@ -1,3 +1,4 @@
 %p
   - @images.each do |image|
     = image_tag "#{image.image}"
+    -#= render "likes/like_form", :locals => {:image => image}

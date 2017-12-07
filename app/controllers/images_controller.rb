@@ -14,7 +14,6 @@ class ImagesController < ApplicationController
   def show
     @like = @image.likes.find_by(user_id: current_user.id)
     @comments = @image.comments.all
-
   end
 
   # GET /images/new
