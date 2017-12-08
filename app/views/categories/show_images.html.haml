@@ -1,12 +1,7 @@
-%p
-  - @images_with_likes.each do |image_hash|
-    = image_tag "#{image_hash["image_key"].image}"
-    - if image_hash["like_key"] == nil
-      = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id
-    - if image_hash["like_key"] != nil
-      = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id, local_form_like_id: image_hash["like_key"].id
+- @images_with_likes.each do |image_hash|
+  = image_tag "#{image_hash["image_key"].image}"
+  - if image_hash["like_key"] == nil
+    = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id
+  - if image_hash["like_key"] != nil
+    = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id, local_form_like_id: image_hash["like_key"].id
 
-  -#- @images.each do |image|
-  -#  = image_tag "#{image.image}"
-  -#  = render "likes/like_form_categories_img", my_image_id: image.id
-  -#  -#= render "likes/like_form", :locals => {:image => image}
