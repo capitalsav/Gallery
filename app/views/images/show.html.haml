@@ -1,21 +1,24 @@
-%p#notice= notice
-%p
-  %strong Image:
-  = @image.image
-%p
-  %strong Category:
-  = @image.category_id
-%p
-  %strong Like
-  = render "likes/like_form"
-%p
-  %strong Image:
-  = image_tag "#{@image.image}"
-%p
-  = render "comments/comments"
-  = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
-    = f.text_field :text
-    = f.submit "Comment", class: "btn btn-large"
-= link_to 'Edit', edit_image_path(@image)
-|
-= link_to 'Back', images_path
+.row
+  .col-xs-12
+    %p#notice= notice
+    %p
+      %strong Image:
+      = @image.image
+    %p
+      %strong Category:
+      = @image.category_id
+  .col-xs-10.col-xs-offset-1
+    .thumbnail
+      = image_tag "#{@image.image}"
+    .caption
+      %p Test
+      = render "likes/like_form"
+  .col-xs-12
+    %p
+      = render "comments/comments"
+      = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
+        = f.text_field :text
+        = f.submit "Comment", class: "btn btn-large"
+    = link_to 'Edit', edit_image_path(@image)
+    |
+    = link_to 'Back', images_path
