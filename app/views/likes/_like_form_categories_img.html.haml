@@ -1,0 +1,5 @@
+#like_form_category
+  - if current_user.likes?(local_form_image_id)
+    = render "likes/unlike_category_img", local_image_id: local_form_image_id, local_like_id: local_form_like_id
+  - else
+    = render "likes/like_category_img", local_image_id: local_form_image_id
