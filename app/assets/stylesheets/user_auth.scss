@@ -1,5 +1,4 @@
-/*SignUp*/
-
+/*Login SignUp*/
 .main-auth-row {
   min-height: 80vh;
 }
@@ -88,4 +87,32 @@
     margin-right: auto;
     margin-top: 10%;
   }
+}
+
+/*Profile*/
+.main-profile-row {
+  min-height: 80vh;
+}
+
+.cancel-account-part {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#p-cancel-account {
+  margin-bottom: 5px;
+}
+
+.btn-cancel-account {
+  border-radius: 0 !important;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.profile-form-bottom-empty-space {
+  height: 20px;
 }
