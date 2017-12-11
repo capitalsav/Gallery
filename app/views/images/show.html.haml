@@ -1,17 +1,11 @@
 .row
   .col-xs-12
     %p#notice= notice
-    %p
-      %strong Image:
-      = @image.image
-    %p
-      %strong Category:
-      = @image.category_id
-  .col-xs-10.col-xs-offset-1
+  -#.col-xs-10.col-xs-offset-1
+  .col-xs-12
     .thumbnail
       = image_tag "#{@image.image}"
-    .caption
-      %p Test
+      .caption
       = render "likes/like_form"
   .col-xs-12
     %p
