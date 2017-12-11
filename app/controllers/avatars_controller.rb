@@ -13,7 +13,7 @@ class AvatarsController < InheritedResources::Base
       Avatar.destroy(previous_avatar.id)
     end
 
-    @avatar = Avatar.new(avatar_params)
+    @avatar = Avatar.new(avatar_params, current_user.id)
 
     respond_to do |format|
       if @avatar.save
@@ -29,7 +29,7 @@ class AvatarsController < InheritedResources::Base
   private
 
     def avatar_params
-      params.require(:avatar).permit(:image, :user_id)
+      params.require(:avatar).permit(:image)
     end
 end
 

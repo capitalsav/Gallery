@@ -29,6 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def profile
     @user = current_user
+    @avatar = Avatar.find(current_user.id)
   end
 
   # GET /resource/cancel

@@ -5,17 +5,14 @@
       %ul
         - @avatar.errors.full_messages.each do |message|
           %li= message
+  .row
+    .col-xs-6.col-xs-offset-3
+      .field
+        = f.file_field :image
+        - if f.object.image?
+          .thumbnail
+            = image_tag f.object.image.url(:small_thumb)
+            .caption
+              .actions
+                = f.submit 'Upload', class: 'btn btn-success'
 
-  .field
-    = f.label :image
-    %br/
-    = f.file_field :image
-    - if f.object.image?
-      = image_tag form.object.image
-      = f.label :remove_image
-      = f.check_box :remove_image
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .actions
-    = f.submit 'Save'
