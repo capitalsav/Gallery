@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :avatars
-  # get 'comments/create'
-  #
-  # get 'comments/destroy'
-
-  # get 'likes/create'
-  #
-  # get 'likes/destroy'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_scope :user do
@@ -21,6 +12,7 @@ Rails.application.routes.draw do
   }
 
   root  'static_pages#home'
+  resources :avatars
   resources :categories, only: [:new, :index, :create]
   resources :images, only: [:new, :edit, :create, :update, :destroy, :index, :show] do
     resources :likes, only: [:create, :destroy]
