@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :avatars
   # get 'comments/create'
   #
   # get 'comments/destroy'

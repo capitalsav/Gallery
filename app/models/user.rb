@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :liked_images, :through => :likes, :source => :images
   has_many :comments, foreign_key: "user_id", dependent: :destroy
   has_many :commented_images, :through => :comments, :source => :images
+  has_many :avatars, foreign_key: "user_id", dependent: :destroy
 
   def likes?(image_id)
     likes.find_by(image_id: image_id)
