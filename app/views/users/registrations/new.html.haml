@@ -9,6 +9,9 @@
             = f.text_field :email, placeholder: 'email', :class => 'auth-input'
             = f.password_field :password, :placeholder => 'password', :class => 'auth-input'
             = f.password_field :password_confirmation, :placeholder => 'password confirmation', :class => 'auth-input'
+            %span.btn.btn-success.btn-file
+              Choose avatar
+              \#{f.file_field :avatar}
             = f.submit 'Sign Up', class: 'btn btn-success button-auth'
           %p.auth-users-shared-links
             = render "users/shared/links"
