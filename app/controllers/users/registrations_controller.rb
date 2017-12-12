@@ -28,8 +28,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile
+    # @user = current_user
+    #
+    # avatar = Avatar.new
+    # begin
+    #   avatar = Avatar.find_by_user_id(current_user.id)
+    # rescue ActiveRecord::RecordNotFound
+    #   avatar_uploaded = false
+    #   default_image = "/assets/default_avatar.png"
+    #   #TODO use below for production
+    #   #default_image = "default_avatar.png"
+    #   default_avatar = Avatar.new(default_image, current_user.id)
+    #   @avatar = {:avatar_uploaded => avatar_uploaded, :avatar => default_avatar}
+    # else
+    #   avatar_uploaded = true
+    #   @avatar = {:avatar_uploaded => avatar_uploaded, :avatar => avatar}
+    # end
+
+
     @user = current_user
-    @avatar = Avatar.find(current_user.id)
+    avatar = Avatar.find_by_user_id(current_user.id)
+    avatar_uploaded = true
+    @new_avatar = Avatar.new
+    if avatar.present?
+      @avatar = {:avatar_uploaded => avatar_uploaded, :avatar => avatar}
+    else
+      avatar_uploaded = false
+      default_image = "/assets/default_avatar.png"
+      #TODO use below for production
+      # default_image = "default_avatar.png"
+      @avatar = {:avatar_uploaded => avatar_uploaded, :avatar => default_image}
+    end
   end
 
   # GET /resource/cancel

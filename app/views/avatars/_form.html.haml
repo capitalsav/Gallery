@@ -1,18 +1,8 @@
-= form_for @avatar do |f|
-  - if @avatar.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@avatar.errors.count, "error")} prohibited this avatar from being saved:"
-      %ul
-        - @avatar.errors.full_messages.each do |message|
-          %li= message
+= form_for(@new_avatar, remote: true) do |f|
   .row
     .col-xs-6.col-xs-offset-3
       .field
         = f.file_field :image
-        - if f.object.image?
-          .thumbnail
-            = image_tag f.object.image.url(:small_thumb)
-            .caption
-              .actions
-                = f.submit 'Upload', class: 'btn btn-success'
+      .actions
+        = f.submit 'Upload',{class: 'btn btn-success'}
 
