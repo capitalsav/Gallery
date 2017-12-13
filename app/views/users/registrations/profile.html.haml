@@ -3,18 +3,17 @@
     .auth-form-container.auth-form-container-size
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
-        .thumbnail#profile-img-thumbnail
-          - if @avatar[:avatar_uploaded]
-            = image_tag "#{@avatar[:avatar].image.small_thumb.url}", :class => "img-circle"
-          - if !@avatar[:avatar_uploaded]
-            = image_tag @avatar[:avatar], :class => "img-circle"
-        .btn.btn-success#btn-avatar-upload{"data-toggle" => "modal", "data-target" => "#avatarUploadModel"}
-          Upload avatar
+        -if @user.avatar.present?
+          .thumbnail#profile-img-thumbnail
+            = image_tag "#{@user.avatar.small_thumb.url}", :class => "img-circle"
         = f.text_field :name, :placeholder => 'name', :class => 'auth-input'
         = f.text_field :email, placeholder: 'email', :class => 'auth-input'
         = f.password_field :password, :placeholder => 'new password', :class => 'auth-input'
         = f.password_field :password_confirmation, :placeholder => 'new password confirmation', :class => 'auth-input'
         = f.password_field :current_password, autocomplete: "off", :placeholder => 'current password', :class => 'auth-input'
+        %span.btn.btn-success.btn-file{:id => 'avatar-profile-button'}
+          %p#p-profile-avatar Choose avatar
+          \#{f.file_field :avatar, :id => 'avatar-profile'}
         = f.submit 'Update', class: 'btn btn-success button-auth'
       .cancel-account-part
         %p#p-cancel-account Want to cancel account?

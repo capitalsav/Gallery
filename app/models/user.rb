@@ -3,6 +3,8 @@ class User < ApplicationRecord
   validates_processing_of :image
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  mount_uploader :avatar, AvatarUploader
+  validates_processing_of :avatar
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :categories, foreign_key: 'user_id', dependent: :destroy
