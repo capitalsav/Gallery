@@ -8,11 +8,10 @@
       .caption
       = render "likes/like_form"
   .col-xs-12
-    %p
-      = render "comments/comments"
+    .thumbnail.comments-box-thumbnail
       = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
-        = f.text_field :text
-        = f.submit "Comment", class: "btn btn-large"
-    = link_to 'Edit', edit_image_path(@image)
-    |
-    = link_to 'Back', images_path
+        = f.text_area :text, class: "input-comment"
+        %div{align: "right"}
+          = f.submit "Comment", class: "btn btn-primary btn-comment"
+      = render "comments/comments"
+

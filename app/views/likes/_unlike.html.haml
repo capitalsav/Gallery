@@ -1,2 +1,3 @@
-= link_to "UnLike", image_like_path(@image.id, @like.id), :method => :delete, remote: true
-= @likes_count
+= link_to'<i class="glyphicon glyphicon-thumbs-down btn btn-default"></i>'.html_safe, image_like_path(@image.id, @like.id), :method => :delete, remote: true
+%span.likes-count
+  = @likes_count

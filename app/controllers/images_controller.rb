@@ -14,7 +14,15 @@ class ImagesController < ApplicationController
   def show
     @like = @image.likes.find_by(user_id: current_user.id)
     @likes_count = @image.likes.count
-    @comments = @image.comments.all
+    # @comments = @image.comments.all
+    comments = @image.comments.all
+    @comments_with_users = []
+    comments.each do |comment|
+      my_hash = {}
+      my_hash["comment"] = comment
+      my_hash["user"] = comment.user
+      @comments_with_users.push(my_hash)
+    end
   end
 
   # GET /images/new
