@@ -74,13 +74,17 @@ class CategoriesController < ApplicationController
   end
 
   def show_one_image
-    images = Category.find_by_name(params[:name]).images
-    images.each do |image|
-      if image.id == params[:image_id].to_i
-        @image = image
-        @comments = @image.comments.all
+    @image = Category.find_by_name(params[:name]).images.find(params[:image_id])
+    comments = @image.comments.all
+    @like = @image.likes.find_by(user_id: current_user.id)
+    @likes_count = @image.likes.count
+    @comments_with_users = []
+    comments.each do |comment|
+      my_hash = {}
+      my_hash["comment"] = comment
+      my_hash["user"] = comment.user
+      @comments_with_users.push(my_hash)
       end
-    end
   end
 
   private

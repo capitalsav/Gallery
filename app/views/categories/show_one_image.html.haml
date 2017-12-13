@@ -1,6 +1,13 @@
-= image_tag "#{@image.image}"
-= render "likes/like_form"
-= render "comments/comments"
-= form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
-  = f.text_field :text
-  = f.submit "Comment", class: "btn btn-large"
+.row
+  .col-xs-12
+    .thumbnail
+      = image_tag "#{@image.image}"
+      .caption
+      = render "likes/like_form"
+  .col-xs-12
+    .thumbnail.comments-box-thumbnail
+      = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
+        = f.text_area :text, class: "input-comment"
+        %div{align: "right"}
+          = f.submit "Comment", class: "btn btn-primary btn-comment"
+      = render "comments/comments"
