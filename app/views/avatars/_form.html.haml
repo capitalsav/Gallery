@@ -1,8 +1,0 @@
-= form_for(@new_avatar, remote: true) do |f|
-  .row
-    .col-xs-6.col-xs-offset-3
-      .field
-        = f.file_field :image
-      .actions
-        = f.submit 'Upload',{class: 'btn btn-success'}
-

@@ -1,9 +1,0 @@
-$('#avatarUploadModel .avatar-upload-errors').html("<ul>" +
-    "<%- @avatar.errors.full_messages.each do |message| %>" +
-    "<li><%= message %></li>" +
-    "<% end %>" +
-    "</ul>")
-$("#profile-img-thumbnail").html("<%= escape_javascript(
-    image_tag "#{@avatar.image.small_thumb.url}", :class => "img-circle")%>")
-
-
