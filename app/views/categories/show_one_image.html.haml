@@ -3,11 +3,18 @@
     .thumbnail
       = image_tag "#{@image.image}"
       .caption
-      = render "likes/like_form"
-  .col-xs-12
-    .thumbnail.comments-box-thumbnail
-      = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
-        = f.text_area :text, class: "input-comment"
-        %div{align: "right"}
-          = f.submit "Comment", class: "btn btn-primary btn-comment"
-      = render "comments/comments"
+      - if user_signed_in?
+        = render "likes/like_form"
+      - if !user_signed_in?
+        .likes-count
+          %span
+            = @likes_count
+            Likes
+  - if user_signed_in?
+    .col-xs-12
+      .thumbnail.comments-box-thumbnail
+        = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
+          = f.text_area :text, class: "input-comment"
+          %div{align: "right"}
+            = f.submit "Comment", class: "btn btn-primary btn-comment"
+        = render "comments/comments"
