@@ -1,7 +1,19 @@
-- @images_with_likes.each do |image_hash|
-  = image_tag "#{image_hash["image_key"].image.url}"
-  - if image_hash["like_key"] == nil
-    = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id
-  - if image_hash["like_key"] != nil
-    = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id, local_form_like_id: image_hash["like_key"].id
+.row
+  .col-xs-12
+    .row
+      - @images_with_likes.each do |image_hash|
+        .col-xs-12.col-sm-6
+          %div{align: "center"}
+            .thumbnail.single-cat-img-thumb
+              = image_tag "#{image_hash["image_key"].image.url}", class: 'single-cat-img'
+              .caption
+                - if user_signed_in?
+                  - if image_hash["like_key"] == nil
+                    = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id, local_form_likes_count: image_hash["likes_count_key"]
+                  - if image_hash["like_key"] != nil
+                    = render "likes/like_form_categories_img", local_form_image_id: image_hash["image_key"].id, local_form_like_id: image_hash["like_key"].id, local_form_likes_count: image_hash["likes_count_key"]
+                - if !user_signed_in?
+                  %span.likes-count
+                    = image_hash["likes_count_key"]
+                    Likes
 

@@ -1,5 +1,5 @@
 %div{ :id => "like_form_category#{local_form_image_id}" }
   - if current_user.likes?(local_form_image_id)
-    = render "likes/unlike_category_img", local_image_id: local_form_image_id, local_like_id: local_form_like_id
+    = render "likes/unlike_category_img", local_image_id: local_form_image_id, local_like_id: local_form_like_id, local_likes_count: local_form_likes_count
   - else
-    = render "likes/like_category_img", local_image_id: local_form_image_id
+    = render "likes/like_category_img", local_image_id: local_form_image_id, local_likes_count: local_form_likes_count

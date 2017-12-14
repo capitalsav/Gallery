@@ -72,11 +72,21 @@ class CategoriesController < ApplicationController
   def show_images
     images = Category.find_by_name(params[:name]).images
     @images_with_likes = []
-    images.each do |image|
-      my_hash = {}
-      my_hash["image_key"] = image
-      my_hash["like_key"] = image.likes.find_by(user_id: current_user.id)
-      @images_with_likes.push(my_hash)
+    if user_signed_in?
+      images.each do |image|
+        my_hash = {}
+        my_hash["image_key"] = image
+        my_hash["like_key"] = image.likes.find_by(user_id: current_user.id)
+        my_hash["likes_count_key"] = image.likes.count
+        @images_with_likes.push(my_hash)
+      end
+    else
+      images.each do |image|
+        my_hash = {}
+        my_hash["image_key"] = image
+        my_hash["likes_count_key"] = image.likes.count
+        @images_with_likes.push(my_hash)
+      end
     end
   end
 
