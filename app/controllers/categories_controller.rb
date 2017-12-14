@@ -4,7 +4,14 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    categories = Category.all
+    @categories_with_images = []
+    categories.each do |category|
+      my_hash = {}
+      my_hash["category_key"] = category
+      my_hash["image_key"] = category.images.order("RANDOM()").first
+      @categories_with_images.push(my_hash)
+    end
   end
 
   # GET /categories/1
