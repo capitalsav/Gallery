@@ -54,6 +54,10 @@ gem 'haml-rails'
 # gem jQuery
 gem 'jquery-rails'
 
+# gems for pagination images
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 
 
 group :development, :test do
