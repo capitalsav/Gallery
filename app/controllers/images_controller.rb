@@ -6,28 +6,9 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.left_outer_joins(:likes).distinct.select('images.*, COUNT(likes.*) AS likes_count').group('images.id').order("likes_count DESC").map { |image| image.image.medium_thumb }
-    # puts "================"
-    # @images.each do |image|
-    #   puts "-----"
-    #   print image
-    #   puts "-----"
-    # end
-    # puts "================"
+    @images = Image.left_outer_joins(:likes).distinct.select('images.*, COUNT(likes.*) AS likes_count').group(
+        'images.id').order("likes_count DESC").map { |image| image.image.medium_thumb }
     @images = @images.paginate(:page => params[:page], :per_page => 20)
-      # @images.reject{|image| !image.image.medium_thumb.present? }
-    # @images.each do |image|
-    #   if !image.image.medium_thumb.present?
-    #     @images.delete(image)
-    #   end
-    # end
-    # @images = images.to_hash
-    # @images.each do |image|
-    #   if !image.image.medium_thumb.present?
-    #     @images.delete(image)
-    #   end
-    # end
-    # @images.delete_if {|img| !img.image.medium_thumb.present? }
   end
 
   # GET /images/1
