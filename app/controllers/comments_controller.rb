@@ -1,5 +1,11 @@
 class CommentsController < ApplicationController
+
+  def index
+    @comments = Comment.joins(:user).order("comments.created_at DESC")
+  end
+
   def create
+    # OPTIMIZE try to make it with joins
     @comment = current_user.comments.create!(image_id: params[:image_id], text: params[:comment][:text])
     image = Image.find(params[:image_id])
     # @comments = image.comments.all

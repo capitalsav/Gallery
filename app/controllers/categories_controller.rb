@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    # OPTIMIZE try to make it with joins
     categories = Category.all
     @categories_with_images = []
     categories.each do |category|
@@ -70,6 +71,7 @@ class CategoriesController < ApplicationController
   end
 
   def show_images
+    # OPTIMIZE try to make it with joins
     images = Category.find_by_name(params[:name]).images
     @images_with_likes = []
     if user_signed_in?
@@ -91,6 +93,7 @@ class CategoriesController < ApplicationController
   end
 
   def show_one_image
+    # OPTIMIZE try to make it with joins
     @image = Category.find_by_name(params[:name]).images.find(params[:image_id])
     @likes_count = @image.likes.count
     if user_signed_in?

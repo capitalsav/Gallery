@@ -27,7 +27,7 @@
         %li
           %a{:href => "#"} Images
         %li
-          %a{:href => "#"} Comments
+          = link_to "Comments", comments_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li

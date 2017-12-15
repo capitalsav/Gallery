@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   end
   match '/categories/:name', to: 'categories#show_images', via: 'get', as: 'single_category'
   match '/categories/:name/:image_id', to: 'categories#show_one_image', via: 'get'
+  match '/comments', to: 'comments#index', via: 'get', as: 'comments'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -12,6 +12,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    # OPTIMIZE try to make it with joins
     @likes_count = @image.likes.count
     if user_signed_in?
       @like = @image.likes.find_by(user_id: current_user.id)
