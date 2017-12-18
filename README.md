@@ -1,24 +1,24 @@
-# README
+# GALLERY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+This project require:
 
-* Ruby version
+* Ruby 2.3.1
 
-* System dependencies
+## Local development settings
 
-* Configuration
+You can run this project on your local development machine by following next steps. 
 
-* Database creation
+* Disable carrierwave on Image model by comment "mount_uploader" and "validates_processing_of" strings
 
-* Database initialization
+* Run `rake upload_files:upload_files_from_local_dir`
 
-* How to run the test suite
+* Enable carrierwave on Image model by uncomment "mount_uploader" and "validates_processing_of" strings
 
-* Services (job queues, cache servers, search engines, etc.)
+* Run `rake upload_files:recreate_thumb_versions`
 
-* Deployment instructions
+## Authors
 
-* ...
+* Anton Storchak
+

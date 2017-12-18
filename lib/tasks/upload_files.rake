@@ -23,4 +23,8 @@ namespace :upload_files do
       end
     end
   end
+
+  task recreate_thumb_versions: :environment do
+    Image.find_each {|image| image.image.recreate_versions!(:medium_thumb, :small_thumb)}
+  end
 end
