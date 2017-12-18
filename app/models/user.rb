@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :liked_images, :through => :likes, :source => :images
   has_many :comments, foreign_key: "user_id", dependent: :destroy
   has_many :commented_images, :through => :comments, :source => :images
+  has_many :subscriptions, foreign_key: 'user_id', dependent: :destroy
+  has_many :subscribed_categories, :through => :subscriptions, :source => :categories
   
 
   def likes?(image_id)
@@ -24,5 +26,17 @@ class User < ApplicationRecord
 
   def unlike_image(image_id)
     likes.find_by(image_id: image_id).destroy!
+  end
+
+  def subscribed?(category_id)
+    subscriptions.find_by(category_id: category_id)
+  end
+
+  def subscribe!(category_id)
+    subscriptions.create!(category_id: category_id)
+  end
+
+  def unsubscribe(category_id)
+    subscriptions.find_by(category_id: category_id).destroy!
   end
 end

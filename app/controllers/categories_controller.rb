@@ -71,6 +71,8 @@ class CategoriesController < ApplicationController
   end
 
   def show_images
+    @category = Category.find_by_name(params[:name])
+    @subscription = @category.subscriptions.find_by(user_id: current_user.id)
     # OPTIMIZE try to make it with joins
     images = Category.find_by_name(params[:name]).images
     @images_with_likes = []
