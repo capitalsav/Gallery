@@ -58,6 +58,10 @@ gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# gem for email notifications queue
+gem 'resque'
+gem 'resque_mailer'
+
 
 
 group :development, :test do
