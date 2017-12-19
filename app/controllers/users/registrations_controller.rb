@@ -28,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile
+    #TODO remove redundant code @user
     @user = current_user
   end
 
