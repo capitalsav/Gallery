@@ -3,8 +3,7 @@ class SubscriptionsController < ApplicationController
   def create
     @category = Category.find(params[:category_id])
     @subscription = current_user.subscribe!(params[:category_id])
-    # CategoryMailer.subscribe_email(current_user, @category)
-    CategoryMailer.subscribe_email(current_user, @category).deliver
+    Resque.enqueue(CategoryNotificationJobJob, current_user, @category)
     respond_to do |format|
       format.html {redirect_to :back}
       format.js
