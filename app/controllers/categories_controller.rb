@@ -111,6 +111,29 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def new_image
+    @current_category = Category.find_by(id: params[:id], name: params[:name])
+    if @current_category.present?
+      @image = Image.new
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+
+  def create
+    @image = Image.new(image_params)
+
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.json { render :show, status: :created, location: @image }
+      else
+        format.html { render :new }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category

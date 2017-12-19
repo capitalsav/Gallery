@@ -1,0 +1,17 @@
+= form_for @image, html: {multipart: true } do |form|
+  - if @image.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@image.errors.count, "error")
+        prohibited this pet from being saved:
+      %ul
+        - @image.errors.full_messages.each do |message|
+          %li= message
+  .field
+    -#= form.hidden_field :category_id, :value => @current_category.id
+  .field
+    = form.label :image
+    %br/
+    = form.file_field :image
+  .actions
+    = form.submit
