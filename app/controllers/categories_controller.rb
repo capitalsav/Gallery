@@ -122,6 +122,7 @@ class CategoriesController < ApplicationController
 
   def create_image
     @image = @category.images.build(image_params)
+    @image.user_id = current_user.id
     respond_to do |format|
       if @image.save
         format.html { redirect_to single_category_image_path(@category.name, @image.id), notice: 'Image was successfully created.' }

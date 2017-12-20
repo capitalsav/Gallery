@@ -1,12 +1,11 @@
 class User < ApplicationRecord
-  mount_uploader :image, AvatarUploader
-  validates_processing_of :image
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   mount_uploader :avatar, AvatarUploader
   validates_processing_of :avatar
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :images, foreign_key: 'user_id', dependent: :destroy
   has_many :categories, foreign_key: 'user_id', dependent: :destroy
   has_many :likes, foreign_key: "user_id", dependent: :destroy
   has_many :liked_images, :through => :likes, :source => :images
@@ -14,6 +13,7 @@ class User < ApplicationRecord
   has_many :commented_images, :through => :comments, :source => :images
   has_many :subscriptions, foreign_key: 'user_id', dependent: :destroy
   has_many :subscribed_categories, :through => :subscriptions, :source => :categories
+
   
 
   def likes?(image_id)

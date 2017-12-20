@@ -1,4 +1,5 @@
 class Image < ApplicationRecord
+  belongs_to :user
   belongs_to :category
   has_many :likes, foreign_key: "image_id", dependent: :destroy
   has_many :liking_users, :through => :likes, :source => :user
