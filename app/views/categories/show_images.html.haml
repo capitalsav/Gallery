@@ -5,6 +5,10 @@
         %div{align: "center"}
           = render "subscriptions/subscription_form"
     .row
+      .col-xs-12
+        %div{align: "center"}
+          = link_to'<i class="btn btn-primary">Upload New Image</i>'.html_safe, new_image_path(@category.name, @category.id), :method => :get
+    .row
       - @images_with_likes.each do |image_hash|
         .col-xs-12
           %div{align: "center"}

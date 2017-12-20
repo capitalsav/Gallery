@@ -1,14 +1,5 @@
-= form_for @image, html: {multipart: true } do |form|
-  - if @image.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@image.errors.count, "error")
-        prohibited this pet from being saved:
-      %ul
-        - @image.errors.full_messages.each do |message|
-          %li= message
-  .field
-    -#= form.hidden_field :category_id, :value => @current_category.id
+= form_for @image, url: create_image_path, html: {multipart: true, method: :post, remote: true } do |form|
+  #new_image_error_explanation
   .field
     = form.label :image
     %br/

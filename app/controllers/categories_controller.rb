@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :create_image]
 
   # GET /categories
   # GET /categories.json
@@ -120,16 +120,15 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def create
-    @image = Image.new(image_params)
-
+  def create_image
+    @image = @category.images.build(image_params)
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.html { redirect_to single_category_image_path(@category.name, @image.id), notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back }
+        format.js {}
       end
     end
   end
@@ -143,5 +142,9 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :user_id)
+    end
+
+    def image_params
+      params.require(:image).permit(:image)
     end
 end
