@@ -39,4 +39,6 @@ class User < ApplicationRecord
   def unsubscribe(category_id)
     subscriptions.find_by(category_id: category_id).destroy!
   end
+
+
 end

@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     # OPTIMIZE try to make it with joins
+    # TODO check for nil in image
     categories = Category.all
     @categories_with_images = []
     categories.each do |category|
