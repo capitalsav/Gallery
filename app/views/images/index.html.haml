@@ -1,7 +1,8 @@
 .row
   .col-xs-12
     %div{align: "center"}
-      = will_paginate
+      -#= will_paginate
+      = paginate @images, :theme => 'twitter-bootstrap-3'
     .row
       -@images.each do |image|
         .col-xs-12.col-sm-4
@@ -9,7 +10,8 @@
             .thumbnail.single-cat-img-thumb
               = image_tag image, class: 'single-cat-img'
     %div{align: "center"}
-      = will_paginate
+      -#= will_paginate
+      = paginate @images, :theme => 'twitter-bootstrap-3'
 
 
 

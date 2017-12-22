@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
   def index
     @images = Image.left_outer_joins(:likes).distinct.select('images.*, COUNT(likes.*) AS likes_count').group(
         'images.id').order("likes_count DESC").map { |image| image.image.medium_thumb }
-    @images = @images.paginate(:page => params[:page], :per_page => 20)
+    @images = Kaminari.paginate_array(@images).page(params[:page])
   end
 
   # GET /images/1

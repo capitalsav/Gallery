@@ -57,8 +57,8 @@ gem 'haml-rails'
 gem 'jquery-rails'
 
 # gems for pagination images
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # gem for email notifications queue
 gem 'resque'
