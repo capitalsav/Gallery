@@ -12,6 +12,16 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
+        panel "Recent Categories" do
+          table_for Category.order("id desc").limit(5).map do
+            column("Category"){|category| link_to "#{category.name}", single_category_path(category.name) }
+          end
+        end
+      end
+    end
+
+    columns do
+      column do
         panel "Recent Comments" do
           table_for Comment.joins(:user).joins(:image).order("id desc").limit(5).map do
             column("Text"){|comment| comment.text}
