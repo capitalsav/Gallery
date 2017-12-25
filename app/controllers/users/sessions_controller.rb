@@ -13,6 +13,11 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
+    action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_SIGN_OUT, "url" => UserAction::PATH_SIGN_OUT}
+    puts "=============================0"
+    user_action = UserAction.new(action_params)
+    user_action.save
+    puts "=============================1"
     super
   end
 

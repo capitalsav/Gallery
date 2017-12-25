@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :commented_images, :through => :comments, :source => :images
   has_many :subscriptions, foreign_key: 'user_id', dependent: :destroy
   has_many :subscribed_categories, :through => :subscriptions, :source => :categories
+  has_many :user_actions, foreign_key: 'user_id'
 
   
 

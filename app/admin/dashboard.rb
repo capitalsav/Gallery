@@ -42,5 +42,22 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
+
+    columns do
+      column do
+        panel "Recent Images" do
+          user_actions = UserAction.order('id DESC')
+          paginated_collection(user_actions.page(params[:page]).per(15), download_links: false) do
+            table_for(collection, sortable: false) do |action|
+              column :id
+              column ("User"){|action| action.user.email}
+              column ("Action Type"){|action| action.action_type}
+              column ("Url"){|action| "localhost:3000#{action.url}"}
+              column ("Timestamp"){|action| action.created_at.strftime("%Y-%m-%d %H:%M:%S")}
+            end
+          end
+        end
+      end
+    end
   end # content
 end
