@@ -31,5 +31,16 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
+
+    columns do
+      column do
+        panel "Recent Images" do
+          table_for Image.joins(:user).order("id desc").limit(10).map do
+            column("Image"){|image| image_tag image.image.small_thumb.url}
+            column("Image Path"){|image| link_to "#{image.image}", single_category_image_path(image.category.name, image.id) }
+          end
+        end
+      end
+    end
   end # content
 end
