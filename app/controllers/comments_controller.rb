@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.joins(:user).order("comments.created_at DESC")
+    if user_signed_in?
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, comments_path)
+    end
   end
 
   def create
@@ -21,8 +24,8 @@ class CommentsController < ApplicationController
       format.html { redirect_to :back }
       format.js
     end
-    action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_COMMENT, "url" => single_category_image_path(@comment.image.category.name)}
-    user_action = UserAction.new(action_params)
-    user_action.save
+    if user_signed_in?
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_COMMENT, single_category_image_path(@comment.image.category.name))
+    end
   end
 end

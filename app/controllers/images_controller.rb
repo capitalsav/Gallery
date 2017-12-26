@@ -9,9 +9,9 @@ class ImagesController < ApplicationController
     @images = Image.left_outer_joins(:likes).distinct.select('images.*, COUNT(likes.*) AS likes_count').group(
         'images.id').order("likes_count DESC").map { |image| image.image.medium_thumb }
     @images = Kaminari.paginate_array(@images).page(params[:page])
-    action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => images_path}
-    user_action = UserAction.new(action_params)
-    user_action.save
+    if user_signed_in?
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, images_path)
+    end
   end
 
   # GET /images/1
@@ -36,9 +36,7 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
     if user_signed_in?
-      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => new_image_path}
-      user_action = UserAction.new(action_params)
-      user_action.save
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
     end
   end
 

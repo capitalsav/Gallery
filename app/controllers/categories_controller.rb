@@ -15,9 +15,7 @@ class CategoriesController < ApplicationController
       @categories_with_images.push(my_hash)
     end
     if user_signed_in?
-      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => categories_path}
-      user_action = UserAction.new(action_params)
-      user_action.save
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, categories_path)
     end
   end
 
@@ -30,9 +28,7 @@ class CategoriesController < ApplicationController
   def new
     @category = Category.new
     if user_signed_in?
-      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => new_category_path}
-      user_action = UserAction.new(action_params)
-      user_action.save
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_category_path)
     end
   end
 
@@ -95,9 +91,7 @@ class CategoriesController < ApplicationController
         my_hash["likes_count_key"] = image.likes.count
         @images_with_likes.push(my_hash)
       end
-      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => single_category_path}
-      user_action = UserAction.new(action_params)
-      user_action.save
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_path)
     else
       images.each do |image|
         my_hash = {}
@@ -122,9 +116,7 @@ class CategoriesController < ApplicationController
         my_hash["user"] = comment.user
         @comments_with_users.push(my_hash)
       end
-      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => single_category_image_path}
-      user_action = UserAction.new(action_params)
-      user_action.save
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_image_path)
     end
   end
 
@@ -132,6 +124,9 @@ class CategoriesController < ApplicationController
     @current_category = Category.find_by(id: params[:id], name: params[:name])
     if @current_category.present?
       @image = Image.new
+      if user_signed_in?
+        UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
+      end
     else
       raise ActionController::RoutingError.new('Not Found')
     end
