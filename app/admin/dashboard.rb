@@ -54,6 +54,7 @@ ActiveAdmin.register_page "Dashboard" do
               column ("Action Type"){|action| action.action_type}
               column ("Url"){|action| "localhost:3000#{action.url}"}
               column ("Timestamp"){|action| action.created_at.strftime("%Y-%m-%d %H:%M:%S")}
+              column ("TimeZone"){|action| Time.zone.name}
             end
           end
         end
