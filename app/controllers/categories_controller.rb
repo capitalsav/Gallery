@@ -14,6 +14,11 @@ class CategoriesController < ApplicationController
       my_hash["image_key"] = category.images.order("RANDOM()").first
       @categories_with_images.push(my_hash)
     end
+    if user_signed_in?
+      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => categories_path}
+      user_action = UserAction.new(action_params)
+      user_action.save
+    end
   end
 
   # GET /categories/1
@@ -24,6 +29,11 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    if user_signed_in?
+      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => new_category_path}
+      user_action = UserAction.new(action_params)
+      user_action.save
+    end
   end
 
   # GET /categories/1/edit
@@ -85,6 +95,9 @@ class CategoriesController < ApplicationController
         my_hash["likes_count_key"] = image.likes.count
         @images_with_likes.push(my_hash)
       end
+      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => single_category_path}
+      user_action = UserAction.new(action_params)
+      user_action.save
     else
       images.each do |image|
         my_hash = {}
@@ -109,6 +122,9 @@ class CategoriesController < ApplicationController
         my_hash["user"] = comment.user
         @comments_with_users.push(my_hash)
       end
+      action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_NAVIGATION, "url" => single_category_image_path}
+      user_action = UserAction.new(action_params)
+      user_action.save
     end
   end
 

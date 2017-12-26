@@ -9,23 +9,18 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    puts "==================================SIGN_IN______________"
     if user_signed_in?
       action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_SIGN_IN, "url" => new_user_session_path}
-      puts "=============================0"
       user_action = UserAction.new(action_params)
       user_action.save
-      puts "=============================1"
     end
   end
 
   # DELETE /resource/sign_out
   def destroy
     action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_SIGN_OUT, "url" => UserAction::PATH_SIGN_OUT}
-    puts "=============================0"
     user_action = UserAction.new(action_params)
     user_action.save
-    puts "=============================1"
     super
   end
 

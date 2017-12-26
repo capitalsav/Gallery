@@ -7,6 +7,9 @@ class LikesController < ApplicationController
       format.html { redirect_to :back }
       format.js
     end
+    action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_LIKES, "url" => single_category_image_path(@image.category.name)}
+    user_action = UserAction.new(action_params)
+    user_action.save
   end
 
   def destroy
