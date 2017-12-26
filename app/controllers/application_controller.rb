@@ -15,19 +15,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :current_password, :avatar])
   end
-
-  private
-  # Overwriting the sign_out redirect path method
-  def after_sign_in_path_for(resource_or_scope)
-    action_params = {"user_id" => current_user.id, "action_type" => UserAction::ACTION_SIGN_IN, "url" => new_user_session_path}
-    puts "=============================0"
-    user_action = UserAction.new(action_params)
-    user_action.save
-    puts "=============================1"
-    root_path
-  end
-  # Overwriting the sign_out redirect path method
-  def after_sign_out_path_for(resource_or_scope)
-    root_path
-  end
 end
