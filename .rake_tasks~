@@ -24,6 +24,7 @@ db:structure:dump
 db:structure:load
 db:version
 dev:cache
+haml:erb2haml
 initializers
 log:clear
 middleware
