@@ -8,7 +8,7 @@ class LikesController < ApplicationController
       format.js
     end
     if user_signed_in?
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_LIKES, single_category_image_path(@image.category.name))
+      # UserAction.save_user_action(current_user.id, UserAction::ACTION_LIKES, single_category_image_path(@image.category.name))
     end
   end
 
