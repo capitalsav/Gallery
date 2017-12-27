@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def profile
     #TODO remove redundant code @user
     @user = current_user
-    # UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, profile_path)
+    UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, profile_path)
   end
 
   # GET /resource/cancel

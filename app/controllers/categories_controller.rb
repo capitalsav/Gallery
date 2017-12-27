@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
       @categories_with_images.push(my_hash)
     end
     if user_signed_in?
-      # UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, categories_path)
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, categories_path)
     end
   end
 
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   def new
     @category = Category.new
     if user_signed_in?
-      # UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_category_path)
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_category_path)
     end
   end
 
@@ -91,7 +91,7 @@ class CategoriesController < ApplicationController
         my_hash["likes_count_key"] = image.likes.count
         @images_with_likes.push(my_hash)
       end
-      # UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_path)
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_path)
     else
       images.each do |image|
         my_hash = {}
@@ -116,7 +116,7 @@ class CategoriesController < ApplicationController
         my_hash["user"] = comment.user
         @comments_with_users.push(my_hash)
       end
-      # UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_image_path)
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_image_path)
     end
   end
 
@@ -125,7 +125,7 @@ class CategoriesController < ApplicationController
     if @current_category.present?
       @image = Image.new
       if user_signed_in?
-        # UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
+        UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
       end
     else
       raise ActionController::RoutingError.new('Not Found')
