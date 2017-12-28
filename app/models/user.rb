@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :commented_images, :through => :comments, :source => :images
   has_many :subscriptions, foreign_key: 'user_id', dependent: :destroy
   has_many :subscribed_categories, :through => :subscriptions, :source => :categories
-  has_many :user_actions, foreign_key: 'user_id'
+  has_many :user_actions, foreign_key: 'user_id', dependent: :destroy
 
   
 
@@ -41,11 +41,4 @@ class User < ApplicationRecord
     subscriptions.find_by(category_id: category_id).destroy!
   end
 
-  def display_user_email
-    self.email
-  end
-
-  # def name
-  #   self.email
-  # end
 end
