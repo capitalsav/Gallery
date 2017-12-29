@@ -104,7 +104,7 @@ class CategoriesController < ApplicationController
 
   def show_one_image
     # OPTIMIZE try to make it with joins
-    @image = Category.find_by_name(params[:name]).images.find(params[:image_id])
+    @image = Category.friendly.find(params[:id]).images.find(params[:image_id])
     @likes_count = @image.likes.count
     if user_signed_in?
       comments = @image.comments.all
@@ -121,7 +121,7 @@ class CategoriesController < ApplicationController
   end
 
   def new_image
-    @current_category = Category.friendly.find_by(id: params[:id], name: params[:name])
+    @current_category = Category.friendly.find(params[:id])
     if @current_category.present?
       @image = Image.new
       if user_signed_in?
@@ -137,7 +137,7 @@ class CategoriesController < ApplicationController
     @image.user_id = current_user.id
     respond_to do |format|
       if @image.save
-        format.html { redirect_to single_category_image_path(@category.name, @image.id), notice: 'Image was successfully created.' }
+        format.html { redirect_to single_category_image_path(@category.slug, @image.id), notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { redirect_to :back }
@@ -149,7 +149,7 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

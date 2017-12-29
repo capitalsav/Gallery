@@ -7,7 +7,7 @@
     .row
       .col-xs-12
         %div{align: "center"}
-          = link_to'<i class="btn btn-primary">Upload New Image</i>'.html_safe, new_image_path(@category.name, @category.id), :method => :get
+          = link_to'<i class="btn btn-primary">Upload New Image</i>'.html_safe, new_image_path(@category.slug), :method => :get
     .row
       - @images_with_likes.each do |image_hash|
         .col-xs-12
