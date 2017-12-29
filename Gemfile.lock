@@ -106,6 +106,8 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    friendly_id (5.2.3)
+      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -171,7 +173,7 @@ GEM
     mono_logger (1.1.0)
     multi_json (1.12.2)
     mustermann (1.0.1)
-    nio4r (2.1.0)
+    nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
@@ -275,7 +277,7 @@ GEM
     turbolinks-source (5.0.3)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (4.0.2)
+    uglifier (4.1.1)
       execjs (>= 0.3.0, < 3)
     vegas (0.1.11)
       rack (>= 1.0.0)
@@ -305,6 +307,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  friendly_id
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails

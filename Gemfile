@@ -63,6 +63,8 @@ gem 'bootstrap-kaminari-views'
 # gem for email notifications queue
 gem 'resque'
 
+# gem for user friendly urls
+gem 'friendly_id'
 
 
 

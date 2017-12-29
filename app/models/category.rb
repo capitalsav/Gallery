@@ -1,4 +1,7 @@
 class Category < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :user
   has_many :images, foreign_key: 'category_id', dependent: :destroy
   has_many :subscriptions, foreign_key: "category_id", dependent: :destroy

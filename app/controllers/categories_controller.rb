@@ -78,10 +78,10 @@ class CategoriesController < ApplicationController
   end
 
   def show_images
-    @category = Category.find_by_name(params[:name])
+    @category = Category.friendly.find_by_slug(params[:id])
     @subscription = @category.subscriptions.find_by(user_id: current_user.id)
     # OPTIMIZE try to make it with joins
-    images = Category.find_by_name(params[:name]).images
+    images = Category.friendly.find_by_slug(params[:id]).images
     @images_with_likes = []
     if user_signed_in?
       images.each do |image|
@@ -121,7 +121,7 @@ class CategoriesController < ApplicationController
   end
 
   def new_image
-    @current_category = Category.find_by(id: params[:id], name: params[:name])
+    @current_category = Category.friendly.find_by(id: params[:id], name: params[:name])
     if @current_category.present?
       @image = Image.new
       if user_signed_in?

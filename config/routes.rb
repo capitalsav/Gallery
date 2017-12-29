@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
   end
-  match '/categories/:name', to: 'categories#show_images', via: 'get', as: 'single_category'
+  match '/categories/:id', to: 'categories#show_images', via: 'get', as: 'single_category'
   match '/categories/:name/:image_id', to: 'categories#show_one_image', via: 'get', as: 'single_category_image'
   match '/comments', to: 'comments#index', via: 'get', as: 'comments'
   match '/categories/:name/:id/new_image', to: 'categories#new_image', via: 'get', as: 'new_image'
