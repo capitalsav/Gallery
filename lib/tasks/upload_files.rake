@@ -15,16 +15,6 @@ namespace :upload_files do
       target_directory = Rails.root.join('public', 'uploads', dir_name)
       FileUtils.cp_r(local_directory_path + "/" + dir_name ,target_directory,:verbose => true)
       Category.create(name: dir_name)
-      file_names_array = Dir.entries("#{local_directory_path}/#{dir_name}").select {|entry| !(entry == '.' || entry == '..')}
-      category = Category.find_by_name(dir_name)
-      category_id = category.id
-      file_names_array.each do |file_name|
-        Image.create(image: file_name, category_id: category_id)
-      end
     end
-  end
-
-  task recreate_thumb_versions: :environment do
-    Image.find_each {|image| image.image.recreate_versions!(:medium_thumb, :small_thumb)}
   end
 end
