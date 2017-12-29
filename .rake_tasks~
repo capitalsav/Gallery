@@ -30,6 +30,9 @@ log:clear
 middleware
 notes
 notes:custom
+resque:failures:sort
+resque:work
+resque:workers
 restart
 routes
 secret
