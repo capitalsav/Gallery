@@ -22,9 +22,6 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = Image.new
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
-    end
   end
 
   # GET /images/1/edit

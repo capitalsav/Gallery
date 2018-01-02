@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:new, :index, :create] do
     resources :subscriptions, only: [:create, :destroy]
   end
-  resources :images, only: [:edit, :create, :update, :destroy, :index, :show] do
+  resources :images, only: [:index] do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
   end
