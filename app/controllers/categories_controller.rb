@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy, :create_image]
+  before_action :authenticate_user!, only: [:new, :create, :new_image, :create_image]
 
   # GET /categories
   # GET /categories.json
@@ -19,9 +20,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_category_path)
-    end
+    UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_category_path)
   end
 
   # GET /categories/1/edit
@@ -92,9 +91,7 @@ class CategoriesController < ApplicationController
     @current_category = Category.friendly.find(params[:id])
     if @current_category.present?
       @image = Image.new
-      if user_signed_in?
-        UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
-      end
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
     else
       raise ActionController::RoutingError.new('Not Found')
     end
