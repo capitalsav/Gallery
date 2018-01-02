@@ -1,5 +1,7 @@
 class SubscriptionsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:create, :destroy]
+
   def create
     @category = Category.find(params[:category_id])
     @subscription = current_user.subscribe!(params[:category_id])
