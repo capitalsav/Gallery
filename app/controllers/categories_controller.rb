@@ -32,7 +32,6 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         #TODO check error NoMethodError in CategoriesController#create undefined method `category_url' for #<CategoriesController:0x007f26943a3a88> Did you mean? categories_url
@@ -71,7 +70,6 @@ class CategoriesController < ApplicationController
 
   def show_images
     @category = Category.friendly.find_by_slug(params[:id])
-    @images_with_likes = []
     if user_signed_in?
       @subscription = @category.subscriptions.find_by(user_id: current_user.id)
       @images_with_likes = Category.friendly.find_by_slug(params[:id]).images.map do |image| {image_key: image, like_key: image.likes.find_by(user_id: current_user.id), likes_count_key: image.likes.count} end
@@ -82,19 +80,10 @@ class CategoriesController < ApplicationController
   end
 
   def show_one_image
-    # OPTIMIZE try to make it with joins
     @image = Category.friendly.find(params[:id]).images.find(params[:image_id])
     @likes_count = @image.likes.count
+    @comments = @image.comments
     if user_signed_in?
-      comments = @image.comments.all
-      @like = @image.likes.find_by(user_id: current_user.id)
-      @comments_with_users = []
-      comments.each do |comment|
-        my_hash = {}
-        my_hash["comment"] = comment
-        my_hash["user"] = comment.user
-        @comments_with_users.push(my_hash)
-      end
       UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_image_path)
     end
   end

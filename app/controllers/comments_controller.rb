@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:create]
+
   def index
     @comments = Comment.joins(:user).order("comments.created_at DESC")
     if user_signed_in?
@@ -8,24 +10,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # OPTIMIZE try to make it with joins
-    @comment = current_user.comments.create!(image_id: params[:image_id], text: params[:comment][:text])
-    image = Image.find(params[:image_id])
-    # @comments = image.comments.all
-    comments = image.comments.all
-    @comments_with_users = []
-    comments.each do |comment|
-      my_hash = {}
-      my_hash["comment"] = comment
-      my_hash["user"] = comment.user
-      @comments_with_users.push(my_hash)
-    end
+    current_user.comments.create!(image_id: params[:image_id], text: params[:comment][:text])
+    @comments = Image.find(params[:image_id]).comments
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
     end
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_COMMENTS, single_category_image_path(@comment.image.category.name))
-    end
+    UserAction.save_user_action(current_user.id, UserAction::ACTION_COMMENTS, single_category_image_path(Image.find(params[:image_id]).category.name))
   end
 end
