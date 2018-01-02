@@ -3,15 +3,15 @@
   .col-xs-12
     .row
       - @categories_with_images.each do |category|
-        .col-xs-12.col-sm-4
-          %div{align: "center"}
-            -if category["image_key"].present?
+        -if category[:image_key].present?
+          .col-xs-12.col-sm-4
+            %div{align: "center"}
               .thumbnail.categories-small-thumb
-                = image_tag category["image_key"].image.medium_thumb.url
+                = image_tag category[:image_key].image.medium_thumb.url
                 .caption
                   %div{align: "left"}
                     %span.categories-cat-name
-                      =link_to "#{category["category_key"].name}", single_category_path(category["category_key"].name), class: 'categories-link'
+                      =link_to "#{category[:category_key].name}", single_category_path(category[:category_key].name), class: 'categories-link'
 
 -#%p#notice= notice
 -#%h1 Categories

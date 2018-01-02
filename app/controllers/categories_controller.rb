@@ -4,16 +4,8 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    # OPTIMIZE try to make it with joins
     # TODO check for nil in image
-    categories = Category.all
-    @categories_with_images = []
-    categories.each do |category|
-      my_hash = {}
-      my_hash["category_key"] = category
-      my_hash["image_key"] = category.images.order("RANDOM()").first
-      @categories_with_images.push(my_hash)
-    end
+    @categories_with_images = Category.all.map do |category| {category_key: category, image_key: category.images.order("RANDOM()").first} end
     if user_signed_in?
       UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, categories_path)
     end
