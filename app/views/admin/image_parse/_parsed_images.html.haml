@@ -1,2 +1,8 @@
 - @images.each do |image|
   = image_tag image
+  = form_for :image, url: upload_remote_image_path , html: {multipart: true, method: :post, remote: true } do |form|
+    = form.hidden_field :remote_image_url, value: image
+    = form.select(:category_id, @categories.collect { |category| [category.name, category.id] })
+    = form.select(:user_id, @users.collect { |user| [user.name, user.id] })
+    = form.submit "Upload image", class: "btn btn-success"
+
