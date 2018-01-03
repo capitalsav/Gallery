@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:new, :index, :create] do
     resources :subscriptions, only: [:create, :destroy]
   end
-  resources :images, only: [:index] do
+  resources :images, only: [:index, :upload_remote] do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
   end
@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   match '/categories/:id/:image_id', to: 'categories#show_one_image', via: 'get', as: 'single_category_image'
   match '/comments', to: 'comments#index', via: 'get', as: 'comments'
   match '/categories/:id/create_image', to: 'categories#create_image', via: 'post', as: 'create_image'
+  match '/images/upload_remote', to: 'images#upload_remote', via: 'post', as: 'upload_remote_image'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
