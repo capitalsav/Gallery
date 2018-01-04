@@ -164,3 +164,12 @@
   border-radius: 0px;
   margin-bottom: 10px;
 }
+
+@media (min-width: 0px) and (max-width: 767px) {
+  .g-recaptcha {
+    transform:scale(0.77);
+    -webkit-transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+  }
+}
