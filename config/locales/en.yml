@@ -28,6 +28,34 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  layouts:
+    header:
+      company_name: "Gallery"
+      categories: "Categories"
+      all_categories: "All categories"
+      images: "Images"
+      comments: "Comments"
+      language: "Lang"
+      sign_up: "SignUp"
+      login: "Login"
+      logout: "Log out"
+      profile: "Profile"
+  categories:
+    show_images:
+      upload_new_image: "Upload new image"
+  subscriptions:
+    subscribe:
+      subscribe: "Subscribe"
+    unsubscribe:
+      unsubscribe: "Unsubscribe"
+  likes:
+    like_category_img:
+      likes: "Likes"
+    unlike_category_img:
+      likes: "Likes"
+    like:
+      likes: "Likes"
+    unlike:
+      likes: "Likes"
+

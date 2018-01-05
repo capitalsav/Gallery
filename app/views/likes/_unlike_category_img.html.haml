@@ -1,4 +1,4 @@
 = link_to'<i class="glyphicon glyphicon-thumbs-down btn btn-default"></i>'.html_safe, image_like_path(local_image_id, local_like_id), :method => :delete, remote: true
 %span.likes-count
   = local_likes_count
-  Likes
+  = t('.likes')

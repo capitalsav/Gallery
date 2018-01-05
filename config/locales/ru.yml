@@ -1,0 +1,31 @@
+ru:
+  layouts:
+    header:
+      company_name: "Gallery"
+      company_name: "Gallery"
+      categories: "Категории"
+      all_categories: "Все категории"
+      images: "Картинки"
+      comments: "Комментарии"
+      sign_up: "Зарегистрироваться"
+      login: "Войти"
+      language: "Язык"
+      logout: "Выйти"
+      profile: "Аккаунт"
+  categories:
+    show_images:
+      upload_new_image: "Загрузить картинку"
+  subscriptions:
+    subscribe:
+      subscribe: "Подписаться"
+    unsubscribe:
+      unsubscribe: "Отписаться"
+  likes:
+    like_category_img:
+      likes: "Мне нравится"
+    unlike_category_img:
+      likes: "Мне нравится"
+    like:
+      likes: "Мне нравится"
+    unlike:
+      likes: "Мне нравится"
