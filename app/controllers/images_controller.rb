@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  skip_before_action :user_click, only: [:create, :edit, :update, :destroy, :upload_remote]
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create]
   before_action :authenticate_admin_user!, only: [:edit, :update, :destroy]
@@ -9,9 +10,6 @@ class ImagesController < ApplicationController
     @images = Image.left_outer_joins(:likes).distinct.select('images.*, COUNT(likes.*) AS likes_count').group(
         'images.id').order("likes_count DESC").map { |image| image.image.medium_thumb }
     @images = Kaminari.paginate_array(@images).page(params[:page])
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, images_path)
-    end
   end
 
   # GET /images/1

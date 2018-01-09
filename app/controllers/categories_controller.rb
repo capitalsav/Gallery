@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+
+  skip_before_action :user_click, only: [:create, :update, :destroy, :create_image]
   before_action :set_category, only: [:show, :edit, :update, :destroy, :create_image]
   before_action :authenticate_user!, only: [:new, :create, :new_image, :create_image]
 
@@ -7,9 +9,6 @@ class CategoriesController < ApplicationController
   def index
     # TODO check for nil in image
     @categories_with_images = Category.all.map do |category| {category_key: category, image_key: category.images.order("RANDOM()").first} end
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, categories_path)
-    end
   end
 
   # GET /categories/1
@@ -20,7 +19,6 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-    UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_category_path)
   end
 
   # GET /categories/1/edit
@@ -72,7 +70,6 @@ class CategoriesController < ApplicationController
     if user_signed_in?
       @subscription = @category.subscriptions.find_by(user_id: current_user.id)
       @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, like_key: image.likes.find_by(user_id: current_user.id), likes_count_key: image.likes.count} end
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_path)
     else
       @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, likes_count_key: image.likes.count} end
     end
@@ -80,18 +77,13 @@ class CategoriesController < ApplicationController
 
   def show_one_image
     @image = Category.friendly.find(params[:id]).images.find(params[:image_id])
-    @likes_count = @image.likes.count
-    @comments = @image.comments
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_image_path)
-    end
+    @like = @image.likes.find_by(user_id: current_user.id)
   end
 
   def new_image
     @current_category = Category.friendly.find(params[:id])
     if @current_category.present?
       @image = Image.new
-      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, new_image_path)
     else
       raise ActionController::RoutingError.new('Not Found')
     end

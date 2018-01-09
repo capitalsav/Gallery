@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :get_top_categories
   before_action :set_locale
+  before_action :user_click
 
   def default_url_options
     { locale: I18n.locale }
@@ -23,5 +24,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation, :avatar])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :current_password, :avatar])
+  end
+
+  def save_user_action(action_type)
+    UserAction.save_user_action(current_user.id,  action_type, request.original_url)
+  end
+
+  private
+  def user_click
+    if user_signed_in?
+      UserAction.save_user_action(current_user.id,  UserAction::ACTION_NAVIGATION, request.original_url)
+    end
   end
 end
