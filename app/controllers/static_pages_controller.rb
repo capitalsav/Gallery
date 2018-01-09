@@ -15,8 +15,5 @@ class StaticPagesController < ApplicationController
       static_image = "default.jpg"
       @carousel_images = {:images_uploaded => uploaded, :images => static_image}
     end
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id,  UserAction::ACTION_NAVIGATION, root_path)
-    end
   end
 end

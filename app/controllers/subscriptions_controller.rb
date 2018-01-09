@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
 
+  skip_before_action :user_click, only: [:create, :destroy]
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
