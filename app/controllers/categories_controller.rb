@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
 
-  skip_before_action :user_click, only: [:create, :update, :destroy, :create_image]
-  before_action :set_category, only: [:show, :edit, :update, :destroy, :create_image]
-  before_action :authenticate_user!, only: [:new, :create, :new_image, :create_image]
+  skip_before_action :user_click, only: [:create, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create]
 
   # GET /categories
   # GET /categories.json
@@ -14,6 +14,13 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @category = Category.friendly.find(params[:id])
+    if user_signed_in?
+      @subscription = @category.subscriptions.find_by(user_id: current_user.id)
+      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, like_key: image.likes.find_by(user_id: current_user.id), likes_count_key: image.likes.count} end
+    else
+      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, likes_count_key: image.likes.count} end
+    end
   end
 
   # GET /categories/new
@@ -65,44 +72,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show_images
-    @category = Category.friendly.find(params[:id])
-    if user_signed_in?
-      @subscription = @category.subscriptions.find_by(user_id: current_user.id)
-      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, like_key: image.likes.find_by(user_id: current_user.id), likes_count_key: image.likes.count} end
-    else
-      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, likes_count_key: image.likes.count} end
-    end
-  end
-
-  def show_one_image
-    @image = Category.friendly.find(params[:id]).images.find(params[:image_id])
-    @like = @image.likes.find_by(user_id: current_user.id)
-  end
-
-  def new_image
-    @current_category = Category.friendly.find(params[:id])
-    if @current_category.present?
-      @image = Image.new
-    else
-      raise ActionController::RoutingError.new('Not Found')
-    end
-  end
-
-  def create_image
-    @image = @category.images.build(image_params)
-    @image.user_id = current_user.id
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to single_category_image_path(@category.slug, @image.id), notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { redirect_to :back }
-        format.js {}
-      end
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
@@ -112,9 +81,5 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :user_id)
-    end
-
-    def image_params
-      params.require(:image).permit(:image)
     end
 end

@@ -14,7 +14,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Categories" do
           table_for Category.order("id desc").limit(5).map do
-            column("Category"){|category| link_to "#{category.name}", single_category_path(category.name) }
+            column("Category"){|category| link_to "#{category.name}", category_path(category.name) }
           end
         end
       end

@@ -13,18 +13,16 @@ Rails.application.routes.draw do
     }
 
     root  'static_pages#home'
-    resources :categories, only: [:new, :index, :create] do
+    resources :categories, only: [:show, :new, :index, :create] do
       resources :subscriptions, only: [:create, :destroy]
     end
     resources :images, only: [:index, :upload_remote] do
       resources :likes, only: [:create, :destroy]
       resources :comments, only: [:create]
     end
-    match '/categories/:id', to: 'categories#show_images', via: 'get', as: 'single_category'
-    match '/categories/:id/new_image', to: 'categories#new_image', via: 'get', as: 'new_image'
-    match '/categories/:id/:image_id', to: 'categories#show_one_image', via: 'get', as: 'single_category_image'
+    match '/categories/:id/new_image', to: 'images#new', via: 'get', as: 'new_image'
+    match '/categories/:id/:image_id', to: 'images#show', via: 'get', as: 'single_category_image'
     match '/comments', to: 'comments#index', via: 'get', as: 'comments'
-    match '/categories/:id/create_image', to: 'categories#create_image', via: 'post', as: 'create_image'
-    match '/images/upload_remote', to: 'images#upload_remote', via: 'post', as: 'upload_remote_image'
+    match '/categories/:id/create_image', to: 'images#create', via: 'post', as: 'create_image'
   end
 end
