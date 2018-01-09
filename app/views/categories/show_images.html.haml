@@ -8,7 +8,8 @@
       .row
         .col-xs-12
           %div{align: "center"}
-            = link_to'<i class="btn btn-primary">Upload New Image</i>'.html_safe, new_image_path(@category.slug), :method => :get
+            = link_to(new_image_path(@category.slug), {class: 'btn btn-primary'}, :method => :get) do
+              = t('.upload_new_image')
     .row
       - @images_with_likes.each do |image_hash|
         .col-xs-12
@@ -22,9 +23,5 @@
                       = render "likes/like_form_categories_img", local_form_image_id: image_hash[:image_key].id, local_form_likes_count: image_hash[:likes_count_key]
                     - if image_hash[:like_key] != nil
                       = render "likes/like_form_categories_img", local_form_image_id: image_hash[:image_key].id, local_form_like_id: image_hash[:like_key].id, local_form_likes_count: image_hash[:likes_count_key]
-                  - if !user_signed_in?
-                    %span.likes-count
-                      = image_hash[:likes_count_key]
-                      Likes
 
 

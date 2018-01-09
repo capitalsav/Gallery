@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, only: Proc.new { |c| c.request.format.json? }
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :get_top_categories
+  before_action :set_locale
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
   def get_top_categories
     @top_categories = Category.
         left_outer_joins(:images).distinct.select('categories.*, COUNT(images.*) AS images_count').
