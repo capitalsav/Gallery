@@ -1,0 +1,14 @@
+.row.main-row-comments
+  .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+    -@comments.each do |comment|
+      .thumbnail.comment-thumb
+        .row
+          .col-xs-12
+            -if comment.user.avatar.present?
+              = image_tag "#{comment.user.avatar.small_thumb.url}", :class => "img-circle comment-avatar"
+            -else
+              = image_tag "/assets/default_avatar_small.png", :class => "img-circle comment-avatar"
+            %span.span-comment-name
+              = comment.user.name
+            %span.span-comment-text
+              = comment.text

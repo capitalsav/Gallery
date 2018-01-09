@@ -1,13 +1,21 @@
-%p#notice= notice
-%p
-  %strong Image:
-  = @image.image
-%p
-  %strong Category:
-  = @image.category_id
-%p
-  %strong Image:
-  = image_tag "#{@image.image}"
-= link_to 'Edit', edit_image_path(@image)
-|
-= link_to 'Back', images_path
+.row
+  .col-xs-12
+    .thumbnail
+      = image_tag "#{@image.image}"
+      .caption
+      - if user_signed_in?
+        = render "likes/like_form"
+      - if !user_signed_in?
+        .likes-count
+          %span
+            = @likes_count
+            Likes
+  - if user_signed_in?
+    .col-xs-12
+      .thumbnail.comments-box-thumbnail
+        = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
+          = f.text_area :text, class: "input-comment"
+          %div{align: "right"}
+            = f.submit "Comment", class: "btn btn-primary btn-comment"
+        = render "comments/comments"
+

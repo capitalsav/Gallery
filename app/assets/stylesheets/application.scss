@@ -228,3 +228,8 @@ body {
   text-align: center;
   //display: inline !important;
 }
+
+#notice {
+  z-index: 5;
+  position: absolute;
+}

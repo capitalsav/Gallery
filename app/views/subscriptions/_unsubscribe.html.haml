@@ -1,0 +1,2 @@
+= form_for(@category, url: category_subscription_path(@category.id, @subscription.id), html: { method: :delete }, remote: true) do |f|
+  = f.submit t('.unsubscribe'), class: "btn btn-danger"

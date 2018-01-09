@@ -1,24 +1,22 @@
-# README
+# GALLERY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+This project require:
 
-* Ruby version
+* Ruby 2.3.1
 
-* System dependencies
+## Local development settings
 
-* Configuration
+You can run this project on your local development machine by following next steps. 
 
-* Database creation
+* Disable Category option belongs_to :user by comment this string '# belongs_to :user'
 
-* Database initialization
+* Run `rake upload_files:upload_files_from_local_dir`
 
-* How to run the test suite
+* Enable Category option belongs_to by uncomment this string 'belongs_to :user'
 
-* Services (job queues, cache servers, search engines, etc.)
+## Authors
 
-* Deployment instructions
+* Anton Storchak
 
-* ...

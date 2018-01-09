@@ -5,35 +5,40 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "Capitalsav", root_path, class: "navbar-brand"
+      = link_to t('.company_name'), root_path, class: "navbar-brand"
 
     #myNavbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            Popular Categories
+            = t('.categories')
             %span.caret
           %ul.dropdown-menu
+            - @top_categories.each do |category|
+              %li
+                = link_to "#{category.name}", single_category_path(category.slug), :method => :get
+            %li.divider
             %li
-              %a{:href => "#"} Page 1-1
-            %li
-              %a{:href => "#"} Page 1-2
-            %li
-              %a{:href => "#"} Page 1-3
-            %li
-              %a{:href => "#"} Page 1-4
-            %li
-              %a{:href => "#"} Page 1-5
+              = link_to t('.all_categories'), categories_path
         %li
-          %a{:href => "#"} Images
+          = link_to t('.images'), images_path
         %li
-          %a{:href => "#"} Comments
+          = link_to t('.comments'), comments_path
       %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            = t('.language')
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to 'en', root_path(locale: :en)
+            %li= link_to 'ru', root_path(locale: :ru)
         - if user_signed_in?
           %li
-            = link_to '<i class="glyphicon glyphicon-log-out"></i> Log out'.html_safe, destroy_user_session_path, method: :delete
+            = link_to t('.profile'), profile_path, {class: 'glyphicon glyphicon-user'}
+          %li
+            = link_to t('.logout'), destroy_user_session_path, method: :delete
         - else
           %li
-            = link_to '<i class="glyphicon glyphicon-user"></i> SignUp'.html_safe, new_user_registration_path
+            = link_to t('.sign_up'), new_user_registration_path, {class: 'glyphicon glyphicon-user'}
           %li
-            = link_to '<i class="glyphicon glyphicon-log-in"></i> Login'.html_safe, new_user_session_path
+            = link_to t('.login'), new_user_session_path, {class: 'glyphicon glyphicon-log-in'}

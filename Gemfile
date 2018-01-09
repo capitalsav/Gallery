@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#gem for store smtp and other settings
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -54,6 +56,18 @@ gem 'haml-rails'
 # gem jQuery
 gem 'jquery-rails'
 
+# gems for pagination images
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
+# gem for email notifications queue
+gem 'resque'
+
+# gem for user friendly urls
+gem 'friendly_id'
+
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -72,7 +86,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

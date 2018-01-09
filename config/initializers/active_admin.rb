@@ -122,7 +122,7 @@ ActiveAdmin.setup do |config|
   # config.comments = false
   #
   # You can change the name under which comments are registered:
-  # config.comments_registration_name = 'AdminComment'
+  config.comments_registration_name = 'AdminComment'
   #
   # You can change the order for the comments and you can change the column
   # to be used for ordering:
@@ -290,4 +290,7 @@ ActiveAdmin.setup do |config|
   # You can inherit it with own class and inject it for all resources
   #
   # config.order_clause = MyOrderClause
+
+
+  # config.display_name_methods = [:display_user_email, :full_name, :name, :username, :login, :title, :email, :to_s]
 end

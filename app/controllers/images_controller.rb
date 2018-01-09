@@ -6,7 +6,12 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.left_outer_joins(:likes).distinct.select('images.*, COUNT(likes.*) AS likes_count').group(
+        'images.id').order("likes_count DESC").map { |image| image.image.medium_thumb }
+    @images = Kaminari.paginate_array(@images).page(params[:page])
+    if user_signed_in?
+      UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, images_path)
+    end
   end
 
   # GET /images/1
@@ -26,17 +31,6 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
-
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /images/1
@@ -63,6 +57,20 @@ class ImagesController < ApplicationController
     end
   end
 
+  def upload_remote
+    @category = Category.friendly.find(params[:image][:category_id])
+    @image = @category.images.build(image_params)
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to single_category_path(@category.slug) }
+        format.js {}
+      else
+        format.html { redirect_back fallback_location: root_path }
+        format.js {}
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
@@ -71,6 +79,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:name, :image, :category_id)
+      params.require(:image).permit(:image, :remote_image_url, :category_id, :user_id)
     end
 end

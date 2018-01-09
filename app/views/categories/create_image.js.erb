@@ -1,0 +1,5 @@
+$("#new_image_error_explanation").html("<ul>" +
+    "<%- @image.errors.full_messages.each do |message| %>" +
+    "<li><%= message %></li>" +
+    "<% end %>" +
+    "</ul>")

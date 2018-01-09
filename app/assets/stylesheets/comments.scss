@@ -1,0 +1,50 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#comments{
+  max-height: 280px;
+  overflow-x: hidden;
+  margin-top: 15px;
+}
+
+.comment-text {
+
+}
+
+.comment-thumb {
+  -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
+  margin-bottom: 10px !important;
+}
+
+#thumb-comment-avatar {
+  width: 50px;
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.comment-text {
+  float: right;
+}
+
+.span-comment-name {
+  border-right: solid;
+  margin-right: 5px;
+  color: #2e6da4;
+  font-weight: bolder;
+}
+
+.span-comment-text {
+  text-align: center;
+  width: 100%;
+}
+
+/*comments page*/
+.main-row-comments {
+  height: 80vh;
+  overflow-x: hidden;
+}

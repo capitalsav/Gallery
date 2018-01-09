@@ -1,15 +1,15 @@
-.main-sign-up-row {
+/*Login SignUp*/
+.main-auth-row {
   min-height: 80vh;
 }
 
 .auth-form-container {
   padding-top: 30px;
-  //margin-top: 5%;
   background-color: white;
   margin-bottom: 20px;
 }
 
-.sign-up-input {
+.auth-input {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
@@ -21,7 +21,7 @@
   padding-left: 10px;
 }
 
-.button-sign-up {
+.button-auth {
   border-radius: 0 !important;
   width: 80%;
   margin-left: 10%;
@@ -29,6 +29,54 @@
   margin-bottom: 10px;
   height: 45px;
 }
+
+.auth-users-shared-links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.auth-users-shared-links a{
+  color: #76b852;
+}
+
+.auth-form-bottom-empty-space {
+  height: 5px;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 0 !important;
+  margin-bottom: 10px !important;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+#p-sign-up-avatar {
+  margin-bottom: 0px !important;
+}
+
+#p-profile-avatar {
+  margin-bottom: 0px !important;
+}
+
 
 @media (max-width: 460px) {
   .auth-form-container-size {
@@ -74,4 +122,45 @@
     margin-right: auto;
     margin-top: 10%;
   }
+}
+
+/*Profile*/
+.main-profile-row {
+  min-height: 80vh;
+  margin-bottom: 10%;
+}
+
+.cancel-account-part {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#p-cancel-account {
+  margin-bottom: 5px;
+}
+
+.btn-cancel-account {
+  border-radius: 0 !important;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.profile-form-bottom-empty-space {
+  height: 20px;
+}
+
+#profile-img-thumbnail {
+  border: none;
+}
+
+#btn-avatar-upload {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 0px;
+  margin-bottom: 10px;
 }
