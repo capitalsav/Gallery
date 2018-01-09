@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
   def create
     current_user.comments.create!(image_id: params[:image_id], text: params[:comment][:text])
-    @comments = Image.find(params[:image_id]).comments
+    @image = Image.find(params[:image_id])
     respond_to do |format|
       format.html { redirect_to :back }
       format.js

@@ -5,11 +5,6 @@
       .caption
       - if user_signed_in?
         = render "likes/like_form"
-      - if !user_signed_in?
-        .likes-count
-          %span
-            = @likes_count
-            =t('.likes')
     .col-xs-12
       .thumbnail.comments-box-thumbnail
         - if user_signed_in?

@@ -80,8 +80,7 @@ class CategoriesController < ApplicationController
 
   def show_one_image
     @image = Category.friendly.find(params[:id]).images.find(params[:image_id])
-    @likes_count = @image.likes.count
-    @comments = @image.comments
+    @like = @image.likes.where(user_id: current_user.id).first
     if user_signed_in?
       UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, single_category_image_path)
     end
