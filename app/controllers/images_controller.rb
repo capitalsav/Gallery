@@ -1,8 +1,9 @@
 class ImagesController < ApplicationController
   skip_before_action :user_click, only: [:create, :edit, :update, :destroy, :upload_remote]
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create]
-  before_action :authenticate_admin_user!, only: [:edit, :update, :destroy]
+  before_action :set_image, only: [:edit, :update, :destroy]
+  before_action :set_show, only: [:show]
+  before_action :set_category, only: [:create]
+  before_action :authenticate_user!, only: [:new, :create], unless: :current_admin_user
 
   # GET /images
   # GET /images.json
@@ -29,6 +30,16 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
+    @image = @category.images.build(image_params)
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to single_category_image_path(@category.slug, @image.id), notice: 'Image was successfully created.' }
+        format.json { render :show, status: :created, location: @image }
+      else
+        format.html { redirect_to :back }
+        format.js {}
+      end
+    end
   end
 
   # PATCH/PUT /images/1
@@ -55,28 +66,29 @@ class ImagesController < ApplicationController
     end
   end
 
-  def upload_remote
-    @category = Category.friendly.find(params[:image][:category_id])
-    @image = @category.images.build(image_params)
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to single_category_path(@category.slug) }
-        format.js {}
-      else
-        format.html { redirect_back fallback_location: root_path }
-        format.js {}
-      end
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
       @image = Image.find(params[:id])
     end
 
+    def set_category
+      begin
+        @category = Category.friendly.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        @category = Category.friendly.find(params[:image][:id])
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
       params.require(:image).permit(:image, :remote_image_url, :category_id, :user_id)
+    end
+
+    def set_show
+      @image = Category.friendly.find(params[:id]).images.find(params[:image_id])
+      if user_signed_in?
+        @like = @image.likes.find_by(user_id: current_user.id)
+      end
     end
 end

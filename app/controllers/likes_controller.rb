@@ -6,8 +6,7 @@ class LikesController < ApplicationController
 
   def create
     @image = Image.find(params[:image_id])
-    @like = current_user.like_image!(params[:image_id])
-    @likes_count = @image.likes.count
+    @like = current_user.likes.create!(image_id: params[:image_id])
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
@@ -16,8 +15,7 @@ class LikesController < ApplicationController
 
   def destroy
     @image = Image.find(params[:image_id])
-    current_user.unlike_image(params[:image_id])
-    @likes_count = @image.likes.count
+    current_user.likes.find_by(image_id: params[:image_id]).destroy!
     respond_to do |format|
       format.html { redirect_to :back }
       format.js

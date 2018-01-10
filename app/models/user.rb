@@ -20,14 +20,6 @@ class User < ApplicationRecord
     likes.find_by(image_id: image_id)
   end
 
-  def like_image!(image_id)
-    likes.create!(image_id: image_id)
-  end
-
-  def unlike_image(image_id)
-    likes.find_by(image_id: image_id).destroy!
-  end
-
   def subscribed?(category_id)
     subscriptions.find_by(category_id: category_id)
   end
