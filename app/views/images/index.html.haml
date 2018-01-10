@@ -1,44 +1,18 @@
-.row
-  .col-xs-12
-    %div{align: "center"}
-      -#= will_paginate
+#images.section.md-padding.bg-grey
+  .container
+    .text-center
       = paginate @images, :theme => 'twitter-bootstrap-3'
     .row
-      -@images.each do |image|
-        .col-xs-12.col-sm-4
-          %div{align: "center"}
-            .thumbnail.single-cat-img-thumb
-              = image_tag image, class: 'single-cat-img'
-    %div{align: "center"}
-      -#= will_paginate
+      - @images.each do |image|
+        .col-md-4.col-xs-6.images
+          = image_tag image, class: 'img-responsive'
+          .overlay
+          .images-content
+            %span Category
+            %h3
+              = image.model.category.name
+            .images-link
+              = link_to single_category_image_path(image.model.category.slug, image.model.id), {class: 'lightbox'} do
+                %i.fa.fa-picture-o
+    .text-center
       = paginate @images, :theme => 'twitter-bootstrap-3'
-
-
-
-
-
-
-
-
-
-
-
--#%p#notice= notice
--#%h1 Images
--#%table
--#  %thead
--#    %tr
--#      %th Name
--#      %th Image
--#      %th Category
--#      %th{:colspan => "3"}
--#  %tbody
--#    - @images.each do |image|
--#      %tr
--#        %td= image.image
--#        %td= image.category_id
--#        %td= link_to 'Show', image
--#        %td= link_to 'Edit', edit_image_path(image)
--#        %td= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' }
--#%br/
--#= link_to 'New Image', new_image_path
