@@ -9,11 +9,11 @@ class User < ApplicationRecord
   has_many :images, foreign_key: 'user_id', dependent: :destroy
   has_many :categories, foreign_key: 'user_id', dependent: :destroy
   has_many :likes, foreign_key: 'user_id', dependent: :destroy
-  has_many :liked_images, through: :likes, source: :images
+  has_many :liked_images, class_name: 'Image', through: :likes, source: :images
   has_many :comments, foreign_key: 'user_id', dependent: :destroy
-  has_many :commented_images, through: :comments, source: :images
+  has_many :commented_images, class_name: 'Image', through: :comments, source: :images
   has_many :subscriptions, foreign_key: 'user_id', dependent: :destroy
-  has_many :subscribed_categories, through: :subscriptions, source: :categories
+  has_many :subscribed_categories, class_name: 'Category', through: :subscriptions, source: :categories
   has_many :user_actions, foreign_key: 'user_id', dependent: :destroy
 
   def likes?(image_id)
