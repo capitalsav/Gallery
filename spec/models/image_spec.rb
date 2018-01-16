@@ -20,4 +20,19 @@ RSpec.describe Image, type: :model do
   it 'has many commenting users through comments' do
     expect(subject).to have_many(:commenting_users).through(:comments)
   end
+
+  describe '#img' do
+    it 'should validate presence' do
+      record = Image.new
+      record.image = '' # invalid state
+      record.valid? # run validations
+      expect(record.errors[:image]).to include('can\'t be blank')
+      record.image = Rack::Test::UploadedFile.new(
+        Rails.root.join('spec', 'fixtures', 'solnce-kosmos-merkuriy.jpg'),
+        'image/jpeg'
+      )
+      record.valid? # run validations
+      expect(record.errors[:image]).not_to include('can\'t be blank')
+    end
+  end
 end
