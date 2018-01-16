@@ -7,6 +7,8 @@ class UserAction < ApplicationRecord
   PATH_SIGN_OUT = '/users/sign_out'
   belongs_to :user
   validates :user_id, presence: true
+  validates :action_type, presence: true
+  validates :url, presence: true
 
   def self.save_user_action(user_id, action_type, url)
     action_params = {"user_id" => user_id, "action_type" => action_type, "url" => url}

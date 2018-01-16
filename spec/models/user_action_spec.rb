@@ -44,4 +44,40 @@ RSpec.describe UserAction, type: :model do
       UserAction::save_user_action(@user.id, UserAction::ACTION_COMMENTS, @url)
     end.to change { UserAction.count }.by(1)
   end
+
+  describe '#user_id' do
+    it 'should validate presence' do
+      record = UserAction.new
+      record.user_id = '' # invalid state
+      record.valid? # run validations
+      expect(record.errors[:user_id]).to include('can\'t be blank')
+      record.user_id = 1 # valid state
+      record.valid? # run validations
+      expect(record.errors[:user_id]).not_to include('can\'t be blank')
+    end
+  end
+
+  describe '#action_type' do
+    it 'should validate presence' do
+      record = UserAction.new
+      record.action_type = '' # invalid state
+      record.valid? # run validations
+      expect(record.errors[:action_type]).to include('can\'t be blank')
+      record.action_type = 'test' # valid state
+      record.valid? # run validations
+      expect(record.errors[:action_type]).not_to include('can\'t be blank')
+    end
+  end
+
+  describe '#url' do
+    it 'should validate presence' do
+      record = UserAction.new
+      record.url = '' # invalid state
+      record.valid? # run validations
+      expect(record.errors[:url]).to include('can\'t be blank')
+      record.url = 'test' # valid state
+      record.valid? # run validations
+      expect(record.errors[:url]).not_to include('can\'t be blank')
+    end
+  end
 end
