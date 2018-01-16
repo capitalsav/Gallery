@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :subscriptions, foreign_key: 'user_id', dependent: :destroy
   has_many :subscribed_categories, class_name: 'Category', through: :subscriptions, source: :categories
   has_many :user_actions, foreign_key: 'user_id', dependent: :destroy
+  validates :email, presence: true
+  validates :encrypted_password, presence: true, length: { minimum: 6 }
 
   def likes?(image_id)
     likes.find_by(image_id: image_id)
