@@ -16,4 +16,28 @@ RSpec.describe Like, type: :model do
   it 'validates presence the user_id ' do
     is_expected.to validate_presence_of(:user_id)
   end
+
+  describe '#user_id' do
+    it 'should validate presence' do
+      record = Like.new
+      record.user_id = '' # invalid state
+      record.valid? # run validations
+      expect(record.errors[:user_id]).to include('can\'t be blank')
+      record.user_id = 1 # valid state
+      record.valid? # run validations
+      expect(record.errors[:user_id]).not_to include('can\'t be blank')
+    end
+  end
+
+  describe '#image_id' do
+    it 'should validate presence' do
+      record = Like.new
+      record.image_id = '' # invalid state
+      record.valid? # run validations
+      expect(record.errors[:image_id]).to include('can\'t be blank')
+      record.image_id = 1 # valid state
+      record.valid? # run validations
+      expect(record.errors[:image_id]).not_to include('can\'t be blank')
+    end
+  end
 end
