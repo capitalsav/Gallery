@@ -9,7 +9,7 @@ RSpec.describe LikesController, type: :controller do
   end
 
   describe 'POST #create' do
-    it 'creates category' do
+    it 'creates like' do
       expect do
         post :create, params: {
           like: attributes_for(
@@ -23,7 +23,7 @@ RSpec.describe LikesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    it 'delete category' do
+    it 'delete like' do
       like = create(:like, user_id: @user.id, image_id: @image.id)
       expect do
         delete :destroy,
