@@ -27,10 +27,6 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  # GET /categories/1/edit
-  def edit
-  end
-
   # POST /categories
   # POST /categories.json
   def create
@@ -44,16 +40,6 @@ class CategoriesController < ApplicationController
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # PATCH/PUT /categories/1
-  # PATCH/PUT /categories/1.json
-  def update
-  end
-
-  # DELETE /categories/1
-  # DELETE /categories/1.json
-  def destroy
   end
 
   private
