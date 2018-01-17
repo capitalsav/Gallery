@@ -32,11 +32,11 @@ class ImagesController < ApplicationController
   def create
     @image = @category.images.build(image_params)
     respond_to do |format|
-      if @image.save
+      if @image.save!
         format.html { redirect_to single_category_image_path(@category.slug, @image.id), notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
-        format.html { redirect_to :back }
+        format.html { redirect_back fallback_location: root_path }
         format.js {}
       end
     end
