@@ -9,7 +9,7 @@ RSpec.describe StaticPagesController, type: :controller do
   end
 
   describe 'GET #home' do
-    it 'should be successful(NEW)' do
+    it 'should be successful(HOME)' do
       top_categories = [@category]
       images = [@image]
       carousel_images = { images_uploaded: true, images: images }
