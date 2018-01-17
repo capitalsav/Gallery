@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
     @subscription = current_user.subscriptions.create!(category_id: params[:category_id])
     Resque.enqueue(CategoryNotificationJobJob, current_user, @category)
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
   end
@@ -17,7 +17,7 @@ class SubscriptionsController < ApplicationController
     @category = Category.find(params[:category_id])
     current_user.subscriptions.find_by(category_id: params[:category_id]).destroy!
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
   end
