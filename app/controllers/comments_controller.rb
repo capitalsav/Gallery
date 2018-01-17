@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     current_user.comments.create!(image_id: params[:image_id], text: params[:comment][:text])
     @image = Image.find(params[:image_id])
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
   end
