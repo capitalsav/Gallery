@@ -28,6 +28,7 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+# This code make able to sign_in user in rspec requests tests
 module DeviseRequestSpecHelpers
 
   include Warden::Test::Helpers
@@ -74,6 +75,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::ControllerHelpers, type: :controller
+  # include module to make able sign_in user in rspec request tests
   config.include DeviseRequestSpecHelpers, type: :request
 end
 
