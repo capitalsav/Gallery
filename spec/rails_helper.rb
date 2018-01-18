@@ -28,6 +28,23 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+module DeviseRequestSpecHelpers
+
+  include Warden::Test::Helpers
+
+  def sign_in(resource_or_scope, resource = nil)
+    resource ||= resource_or_scope
+    scope = Devise::Mapping.find_scope!(resource_or_scope)
+    login_as(resource, scope: scope)
+  end
+
+  def sign_out(resource_or_scope)
+    scope = Devise::Mapping.find_scope!(resource_or_scope)
+    logout(scope)
+  end
+
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -57,6 +74,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include DeviseRequestSpecHelpers, type: :request
 end
 
 Shoulda::Matchers.configure do |config|
