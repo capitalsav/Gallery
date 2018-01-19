@@ -1,30 +1,38 @@
-%p#notice= notice
-.row
-  .col-xs-12
-    .row
+#categories-page.section.md-padding
+  .container
+    - if user_signed_in?
+      .row
+        .col-xs-12.col-sm-4.col-sm-offset-4
+          .row
+            .col-xs-12
+              .p.text-center
+                = link_to(new_category_path, {class: 'btn btn-primary btn-new-category'}, :method => :get) do
+                  = t('.new_category')
+    .row.categories-page-row
       - @categories_with_images.each do |category|
         -if category[:image_key].present?
-          .col-xs-12.col-sm-4
-            %div{align: "center"}
-              .thumbnail.categories-small-thumb
-                = image_tag category[:image_key].image.medium_thumb.url
-                .caption
-                  %div{align: "left"}
-                    %span.categories-cat-name
-                      =link_to "#{category[:category_key].name}", category_path(category[:category_key].slug), class: 'categories-link'
-
--#%p#notice= notice
--#%h1 Categories
--#%table
--#  %thead
--#    %tr
--#      %th Name
--#      %th User
--#      %th{:colspan => "3"}
--#  %tbody
--#    - @categories.each do |category|
--#      %tr
--#        %td= category.name
--#        %td= category.user_id
--#%br/
--#= link_to 'New Category', new_category_path
+          .col-sm-4
+            .categories-page
+              .categories-page-img
+                = image_tag category[:image_key].image.medium_thumb.url, class: 'img-responsive'
+                .overlay
+                  .categories-page-social
+                    = link_to category_path(category[:category_key].slug) do
+                      %i.fa.fa-picture-o
+              .categories-page-content
+                %h3
+                  =category[:category_key].name
+                %span Category
+        -else
+          .col-sm-4
+            .categories-page
+              .categories-page-img
+                = image_tag "/assets/default.jpg", class: 'img-responsive'
+                .overlay
+                  .categories-page-social
+                    = link_to category_path(category[:category_key].slug) do
+                      %i.fa.fa-picture-o
+              .categories-page-content
+                %h3
+                  =category[:category_key].name
+                %span Category

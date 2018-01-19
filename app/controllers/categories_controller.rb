@@ -13,12 +13,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.friendly.find(params[:id])
+    @images = Category.friendly.find(params[:id]).images
     if user_signed_in?
       @subscription = @category.subscriptions.find_by(user_id: current_user.id)
-      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, like_key: image.likes.find_by(user_id: current_user.id), likes_count_key: image.likes.count} end
-    else
-      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, likes_count_key: image.likes.count} end
     end
   end
 
@@ -33,7 +30,8 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(category_params)
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        flash[:success] = t('.category_created')
+        format.html { redirect_to @category}
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }

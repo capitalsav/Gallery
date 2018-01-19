@@ -7,44 +7,13 @@
   margin-top: 15px;
 }
 
-.comment-text {
-
-}
-
-.comment-thumb {
-  -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  margin-bottom: 10px !important;
-}
-
-#thumb-comment-avatar {
-  width: 50px;
-}
-
-.comment-avatar {
-  width: 40px;
-  height: 40px;
-}
-
-.comment-text {
-  float: right;
-}
-
-.span-comment-name {
-  border-right: solid;
-  margin-right: 5px;
-  color: #2e6da4;
-  font-weight: bolder;
-}
-
-.span-comment-text {
-  text-align: center;
-  width: 100%;
-}
-
 /*comments page*/
 .main-row-comments {
   height: 80vh;
+  overflow-x: hidden;
+}
+
+#all-comments {
+  max-height: 600px;
   overflow-x: hidden;
 }

@@ -1,10 +1,13 @@
-= form_for @image, url: create_image_path, html: {multipart: true, method: :post, remote: true } do |form|
-  #new_image_error_explanation
-  .field
-    = form.label :image
-    %br/
-    = form.file_field :image
-  .field
-    = form.hidden_field :user_id, value: current_user.id
-  .actions
-    = form.submit
+.row.main-new-image
+  = form_for @image, url: create_image_path, html: {multipart: true, method: :post, remote: true } do |form|
+    #new_image_error_explanation
+    .field
+      .p.text-center
+        %span.btn.btn-new-image{id: 'new-image-button'}
+          %p#p-new-image-button Choose image
+          \#{form.file_field :image, id: 'new-image-id'}
+    .field
+      = form.hidden_field :user_id, value: current_user.id
+    .actions
+      .p.text-center
+        = form.submit 'Upload', class: 'btn button-upload-img', id: 'btn-upload-img'

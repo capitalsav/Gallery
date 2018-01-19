@@ -1,21 +1,327 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.img-comments-box {
-  background-color: white;
+//=========================IMAGES PAGE=========================
+
+.images {
+  position: relative;
+  padding: 20px;
+
+  .overlay {
+    background: #1C1D21;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+  }
+
+  .images-content {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    top: 50%;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .images-content {
+    h3 {
+      -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+      transform: translateY(100%);
+      opacity: 0;
+      color: #FFF;
+      margin-bottom: 10px;
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+      -webkit-transition-delay: 0.1s;
+      transition-delay: 0.1s;
+      font-size: 20px;
+      font-size: 2.5vw;
+    }
+  }
+
+  .images-content {
+    span {
+      display: block;
+      text-transform: uppercase;
+      -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+      transform: translateY(100%);
+      opacity: 0;
+      color: #6195FF;
+      margin-bottom: 5px;
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+      -webkit-transition-delay: 0.2s;
+      transition-delay: 0.2s;
+    }
+  }
+
+  .images-link {
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+  }
+
+  .images-link {
+    a {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background-color: #6195FF;
+      color: #FFF;
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+}
+
+.images>img {
+  width: 100%;
+  max-height: 200px;
+}
+
+.images:hover {
+  .overlay {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    opacity: 0.8;
+  }
+
+  .images-content {
+    h3 {
+      -webkit-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+      transform: translateY(0%);
+      opacity: 1;
+      -webkit-transition-delay: 0.1s;
+      transition-delay: 0.1s;
+    }
+  }
+
+  .images-content {
+    span {
+      -webkit-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+      transform: translateY(0%);
+      opacity: 1;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+    }
+  }
+
+  .images-link {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    opacity: 1;
+  }
+}
+//=========================END IMAGES PAGE=========================
+
+//=========================SINGLE IMAGE PAGE=========================
+
+.image {
+  background-color: #FFF;
+  margin: 15px 0px;
+  .image-content {
+    padding: 20px 20px 40px;
+  }
+  .image-meta {
+    margin-bottom: 20px;
+    padding-left: 3px;
+    li {
+      display: inline-block;
+      font-size: 14px;
+      color: #10161A;
+      margin-right: 10px;
+      i {
+        color: #6195FF;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+#main .image .image-content {
+  padding: 20px 0px 0px;
+}
+
+#main .image {
+  margin-top: 0px;
+}
+
+.image-tags {
+  margin: 40px 0px;
+  h5 {
+    margin-bottom: 0;
+    display: inline-block;
+  }
+  a {
+    display: inline-block;
+    padding: 6px 13px;
+    font-size: 14px;
+    margin: 2px 0px;
+    background: #F4F4F4;
+    color: #10161A;
+    i {
+      margin-right: 3px;
+      color: #6195FF;
+    }
+  }
+}
+
+.image-tags a:hover {
+  color: #FFF;
+  background-color: #6195FF;
+  i {
+    color: #FFF;
+  }
+}
+
+.image-comments {
+  margin: 40px 0px;
+}
+
+.main-comments-container {
+  margin-bottom: 20px;
+}
+
+.image-comments .media {
+  padding: 20px;
+  background-color: #FFF;
+  border-top: 1px solid #EEE;
+  border-bottom: 0px;
+  border-right: 1px solid #EEE;
+  border-left: 1px solid #EEE;
+  margin-top: 0px;
+}
+
+.image-comments .media:first-child {
+  border-bottom: 0px;
+}
+
+.image-comments .media:last-child {
+  border-bottom: 1px solid #EEE;
+}
+
+.image-comments .media .media-left {
+  padding-right: 20px;
+}
+
+.image-comments .media .media-body .media-heading {
+  text-transform: uppercase;
+  margin-bottom:10px;
+}
+
+.image-comments .media .media-body .media-heading .time {
+  font-size: 12px;
+  margin-left: 20px;
+  font-weight: 400;
+  color: #868F9B;
+}
+
+@media (max-width: 435px) {
+  .image-comments .media .media-body .media-heading .time {
+    margin-left: 0px;
+  }
+}
+
+.image-comments .media .media-body .media-heading .reply {
+  float: right;
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.image-comments .media.author {
+  background-color: #F4F4F4;
+  border-color: #6195FF;
+  border-bottom: 1px solid #6195FF;
+}
+.image-comments .media.author>.media-body>.media-heading {
+  color: #6195FF;
+}
+
+.image-comments .media.author + .media {
+  border-top: 0px;
 }
 
 .input-comment {
+  margin-top: 30px;
   width: 100%;
-  height: 100px;
-  margin-top: 1px;
-  -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
+  height: 70px;
+  font-size: 14px;
+  border: none;
+  border-bottom-width: medium;
+  border-bottom-style: none;
+  border-bottom-color: currentcolor;
+  color: #354052;
+  background: #F4F4F4;
+  border-bottom: 2px solid #EEE;
 }
 
 .btn-comment {
-  -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
+  background: #6195FF;
+  color: #FFF;
+  border-radius: 0px !important;
+  margin-top: 10px;
 }
+//=========================END SINGLE IMAGE PAGE=========================
+
+//=========================NEW IMAGE PAGE=========================
+.main-new-image {
+  min-height: 80vh;
+}
+
+.btn-new-image {
+  position: relative;
+  overflow: hidden;
+  margin-top: 200px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 0 !important;
+  margin-bottom: 10px !important;
+  background-color: #EEE;
+  input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+}
+
+.button-upload-img {
+  border-radius: 0 !important;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  height: 45px;
+  background: #6195FF;
+  color: #FFF;
+}
+
+#p-new-image-button {
+  margin-bottom: 0px !important;
+}
+//=========================END NEW IMAGE PAGE=========================
