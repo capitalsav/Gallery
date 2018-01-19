@@ -62,6 +62,8 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     arel (8.0.0)
     autoprefixer-rails (7.2.3)
       execjs
@@ -122,6 +124,8 @@ GEM
     formtastic_i18n (0.6.0)
     friendly_id (5.2.3)
       activerecord (>= 4.0.0)
+    geckodriver-helper (0.0.4)
+      archive-zip (~> 0.7.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -148,6 +152,7 @@ GEM
       has_scope (~> 0.6)
       railties (>= 4.2, <= 5.2)
       responders
+    io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -347,6 +352,7 @@ DEPENDENCIES
   factory_bot_rails
   faker!
   friendly_id
+  geckodriver-helper
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
