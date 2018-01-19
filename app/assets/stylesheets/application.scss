@@ -18,34 +18,54 @@
 @import "bootstrap";
 
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
 }
 
-.nav {
-  margin-bottom: 0px;
+//=========================header=========================
+.header-main {
+  background-color: #fff;
+}
+
+.header-text {
+  color: black !important;
+  font-family: Lucida Console, Monaco, monospace, serif;
+  font-weight: bold;
 }
 
 .navbar-brand {
-  font-size: 24pt;
+  font-weight: bold;
+  font-size: xx-large;
 }
 
-#myNavbar {
-  font-size: 12pt;
-}
-
-.alert {
-  z-index: 1;
-}
-
-/*==============FOOTER=============*/
-
+//body {
+//  background: #76b852; /* fallback for old browsers */
+//  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+//  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+//  background: -o-linear-gradient(right, #76b852, #8DC26F);
+//  background: linear-gradient(to left, #76b852, #8DC26F);
+//  font-family: "Roboto", sans-serif;
+//  -webkit-font-smoothing: antialiased;
+//  -moz-osx-font-smoothing: grayscale;
+//}
+//
+//.nav {
+//  margin-bottom: 0px;
+//}
+//
+//.navbar-brand {
+//  font-size: 24pt;
+//}
+//
+//#myNavbar {
+//  font-size: 12pt;
+//}
+//
+//.alert {
+//  z-index: 1;
+//}
+//
+///*==============FOOTER=============*/
+//
 .footer-distributed{
   background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
