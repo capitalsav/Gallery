@@ -5,9 +5,9 @@
         .auth-form-container.auth-form-container-size
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             = devise_error_messages!
-            = f.text_field :email, placeholder: 'email', :class => 'auth-input'
-            = f.password_field :password, :placeholder => 'password', :class => 'auth-input'
-            = f.submit 'Log In', class: 'btn btn-success button-auth'
+            = f.text_field :email, placeholder: 'email', :class => 'auth-input', id: 'sing-in-email-input'
+            = f.password_field :password, :placeholder => 'password', :class => 'auth-input', id: 'sign-in-password-input'
+            = f.submit 'Log In', class: 'btn btn-success button-auth', id: 'btn-sign-in'
           %p.auth-users-shared-links
             = render "users/shared/links"
           .auth-form-bottom-empty-space
