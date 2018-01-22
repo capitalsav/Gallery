@@ -1,4 +1,4 @@
-/*Login SignUp*/
+//=========================LOGIN SIGN_UP PAGE=========================
 .main-auth-row {
   min-height: 80vh;
 }
@@ -17,8 +17,10 @@
   font-size: 14px;
   border: none;
   height: 45px;
-  background: #EEEEEE;
   padding-left: 10px;
+  color: #354052;
+  background: #F4F4F4;
+  border-bottom: 2px solid #EEE;
 }
 
 .button-auth {
@@ -28,15 +30,16 @@
   margin-right: 10%;
   margin-bottom: 10px;
   height: 45px;
+  background: #6195FF;
+  color: #FFF;
 }
 
 .auth-users-shared-links {
   text-align: center;
   margin-top: 10px;
-}
-
-.auth-users-shared-links a{
-  color: #76b852;
+  a {
+    color: #868F9B;
+  }
 }
 
 .auth-form-bottom-empty-space {
@@ -51,6 +54,7 @@
   margin-right: 10%;
   border-radius: 0 !important;
   margin-bottom: 10px !important;
+  background-color: #EEE;
 }
 
 .btn-file input[type=file] {
