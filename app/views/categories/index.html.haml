@@ -1,5 +1,25 @@
-%p#notice= notice
-.row
+#categories-page.section.md-padding
+  .container
+    .row.categories-page-row
+      - @categories_with_images.each do |category|
+        -if category[:image_key].present?
+          .col-sm-4
+            .categories-page
+              .categories-page-img
+                = image_tag category[:image_key].image.medium_thumb.url, class: 'img-responsive'
+                .overlay
+                  .categories-page-social
+                    = link_to category_path(category[:category_key].slug) do
+                      %i.fa.fa-picture-o
+              .categories-page-content
+                %h3
+                  =category[:category_key].name
+                %span Category
+
+
+
+-#%p#notice= notice
+-#.row
   .col-xs-12
     .row
       - @categories_with_images.each do |category|
