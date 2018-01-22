@@ -1,8 +1,7 @@
 ru:
   layouts:
     header:
-      company_name: "Gallery"
-      company_name: "Gallery"
+      company_name: "LOGO"
       categories: "Категории"
       all_categories: "Все категории"
       images: "Картинки"
