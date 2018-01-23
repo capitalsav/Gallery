@@ -231,6 +231,12 @@
   color: #868F9B;
 }
 
+@media (max-width: 435px) {
+  .image-comments .media .media-body .media-heading .time {
+    margin-left: 0px;
+  }
+}
+
 .image-comments .media .media-body .media-heading .reply {
   float: right;
   margin: 0;
