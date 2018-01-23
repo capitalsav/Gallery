@@ -24,7 +24,7 @@
               = @image.comments.size
               Comments
             .image
-              .col-xs-12
+              .col-xs-12.main-comments-container
                 = render "comments/comments_container"
           - if user_signed_in?
             = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
