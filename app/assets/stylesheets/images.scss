@@ -22,7 +22,7 @@
 
 //=========================IMAGES PAGE=========================
 
-.work {
+.images {
   position: relative;
   padding: 20px;
 
@@ -40,7 +40,7 @@
     transition-delay: 0.2s;
   }
 
-  .work-content {
+  .images-content {
     position: absolute;
     left: 25px;
     right: 25px;
@@ -51,7 +51,7 @@
     transform: translateY(-50%);
   }
 
-  .work-content {
+  .images-content {
     h3 {
       -webkit-transform: translateY(100%);
       -ms-transform: translateY(100%);
@@ -68,7 +68,7 @@
     }
   }
 
-  .work-content {
+  .images-content {
     span {
       display: block;
       text-transform: uppercase;
@@ -85,7 +85,7 @@
     }
   }
 
-  .work-link {
+  .images-link {
     text-align: center;
     margin-top: 20px;
     opacity: 0;
@@ -93,7 +93,7 @@
     transition: 0.2s opacity;
   }
 
-  .work-link {
+  .images-link {
     a {
       display: inline-block;
       width: 50px;
@@ -106,19 +106,19 @@
   }
 }
 
-.work>img {
+.images>img {
   width: 100%;
   max-height: 200px;
 }
 
-.work:hover {
+.images:hover {
   .overlay {
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
     opacity: 0.8;
   }
 
-  .work-content {
+  .images-content {
     h3 {
       -webkit-transform: translateY(0%);
       -ms-transform: translateY(0%);
@@ -129,7 +129,7 @@
     }
   }
 
-  .work-content {
+  .images-content {
     span {
       -webkit-transform: translateY(0%);
       -ms-transform: translateY(0%);
@@ -140,10 +140,9 @@
     }
   }
 
-  .work-link {
+  .images-link {
     -webkit-transition-delay: 0.2s;
     transition-delay: 0.2s;
     opacity: 1;
   }
 }
-

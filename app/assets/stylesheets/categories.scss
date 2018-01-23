@@ -118,26 +118,17 @@
 }
 //=========================END CATEGORIES PAGE=========================
 
-.categories-small-thumb {
-  max-width: 300px;
+//=========================SINGLE CATEGORY PAGE=========================
+#category-images {
+  min-height: 80vh;
 }
 
-.categories-cat-name {
-  font-weight: bolder;
+.subscribe-button {
+  border-radius: 0px !important;
 }
 
-.categories-link {
-  color: #76b852;
+.btn-upload-images {
+  border-radius: 0px !important;
+  background-color: #6195FF;
 }
-
-.single-cat-img {
-
-}
-
-.single-cat-img-thumb {
-
-}
-
-.single-cat-img-thumb img{
-  width: 100%;
-}
+//=========================END SINGLE CATEGORY PAGE=========================
