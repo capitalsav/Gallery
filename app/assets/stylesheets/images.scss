@@ -1,25 +1,6 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.img-comments-box {
-  background-color: white;
-}
-
-.input-comment {
-  width: 100%;
-  height: 100px;
-  margin-top: 1px;
-  -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-}
-
-.btn-comment {
-  -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-  box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.2);
-}
-
 //=========================IMAGES PAGE=========================
 
 .images {
@@ -146,3 +127,155 @@
     opacity: 1;
   }
 }
+//=========================END IMAGES PAGE=========================
+
+//=========================SINGLE IMAGE PAGE=========================
+
+.image {
+  background-color: #FFF;
+  margin: 15px 0px;
+  .image-content {
+    padding: 20px 20px 40px;
+  }
+  .image-meta {
+    margin-bottom: 20px;
+    padding-left: 3px;
+    li {
+      display: inline-block;
+      font-size: 14px;
+      color: #10161A;
+      margin-right: 10px;
+      i {
+        color: #6195FF;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+#main .image .image-content {
+  padding: 20px 0px 0px;
+}
+
+#main .image {
+  margin-top: 0px;
+}
+
+.image-tags {
+  margin: 40px 0px;
+  h5 {
+    margin-bottom: 0;
+    display: inline-block;
+  }
+  a {
+    display: inline-block;
+    padding: 6px 13px;
+    font-size: 14px;
+    margin: 2px 0px;
+    background: #F4F4F4;
+    color: #10161A;
+    i {
+      margin-right: 3px;
+      color: #6195FF;
+    }
+  }
+}
+
+.image-tags a:hover {
+  color: #FFF;
+  background-color: #6195FF;
+  i {
+    color: #FFF;
+  }
+}
+
+.image-comments {
+  margin: 40px 0px;
+}
+
+.main-comments-container {
+  margin-bottom: 20px;
+}
+
+.image-comments .media {
+  padding: 20px;
+  background-color: #FFF;
+  border-top: 1px solid #EEE;
+  border-bottom: 0px;
+  border-right: 1px solid #EEE;
+  border-left: 1px solid #EEE;
+  margin-top: 0px;
+}
+
+.image-comments .media:first-child {
+  border-bottom: 0px;
+}
+
+.image-comments .media:last-child {
+  border-bottom: 1px solid #EEE;
+}
+
+.image-comments .media .media-left {
+  padding-right: 20px;
+}
+
+.image-comments .media .media-body .media-heading {
+  text-transform: uppercase;
+  margin-bottom:10px;
+}
+
+.image-comments .media .media-body .media-heading .time {
+  font-size: 12px;
+  margin-left: 20px;
+  font-weight: 400;
+  color: #868F9B;
+}
+
+@media (max-width: 435px) {
+  .image-comments .media .media-body .media-heading .time {
+    margin-left: 0px;
+  }
+}
+
+.image-comments .media .media-body .media-heading .reply {
+  float: right;
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.image-comments .media.author {
+  background-color: #F4F4F4;
+  border-color: #6195FF;
+  border-bottom: 1px solid #6195FF;
+}
+.image-comments .media.author>.media-body>.media-heading {
+  color: #6195FF;
+}
+
+.image-comments .media.author + .media {
+  border-top: 0px;
+}
+
+.input-comment {
+  margin-top: 30px;
+  width: 100%;
+  height: 70px;
+  font-size: 14px;
+  border: none;
+  border-bottom-width: medium;
+  border-bottom-style: none;
+  border-bottom-color: currentcolor;
+  color: #354052;
+  background: #F4F4F4;
+  border-bottom: 2px solid #EEE;
+}
+
+.btn-comment {
+  background: #6195FF;
+  color: #FFF;
+  border-radius: 0px !important;
+  margin-top: 10px;
+}
+//=========================END SINGLE IMAGE PAGE=========================

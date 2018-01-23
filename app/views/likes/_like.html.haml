@@ -1,4 +1,3 @@
-= link_to'<i class="glyphicon glyphicon-thumbs-up btn btn-primary"></i>'.html_safe, image_likes_path(@image), :method => :post, remote: true
+= link_to'<i class="fa fa-thumbs-o-up"></i>'.html_safe, image_likes_path(@image), :method => :post, remote: true
 %span.likes-count
   = @image.likes.size
-  = t('.likes')
