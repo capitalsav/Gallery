@@ -13,12 +13,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.friendly.find(params[:id])
+    @images = Category.friendly.find(params[:id]).images
     if user_signed_in?
       @subscription = @category.subscriptions.find_by(user_id: current_user.id)
-      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, like_key: image.likes.find_by(user_id: current_user.id), likes_count_key: image.likes.count} end
-    else
-      @images_with_likes = Category.friendly.find(params[:id]).images.map do |image| {image_key: image, likes_count_key: image.likes.count} end
     end
   end
 
