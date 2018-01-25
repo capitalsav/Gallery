@@ -1,3 +1,11 @@
-%h1 New Category
-= render 'form', category: @category
-= link_to 'Back', categories_path
+.row.categories-new-main
+  .container
+    .row
+      .col-xs-12
+        .p.text-center
+          %h1 New Category
+    .row
+      .col-xs-12
+        .p.text-center
+          = render 'form', category: @category
+

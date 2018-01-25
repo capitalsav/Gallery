@@ -279,3 +279,49 @@
   margin-top: 10px;
 }
 //=========================END SINGLE IMAGE PAGE=========================
+
+//=========================NEW IMAGE PAGE=========================
+.main-new-image {
+  min-height: 80vh;
+}
+
+.btn-new-image {
+  position: relative;
+  overflow: hidden;
+  margin-top: 200px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 0 !important;
+  margin-bottom: 10px !important;
+  background-color: #EEE;
+  input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+}
+
+.button-upload-img {
+  border-radius: 0 !important;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  height: 45px;
+  background: #6195FF;
+  color: #FFF;
+}
+
+#p-new-image-button {
+  margin-bottom: 0px !important;
+}
+//=========================END NEW IMAGE PAGE=========================
