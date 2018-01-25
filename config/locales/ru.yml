@@ -12,6 +12,8 @@ ru:
       logout: "Выйти"
       profile: "Аккаунт"
   categories:
+    index:
+      new_category: "Создать"
     show:
       upload_new_image: "Загрузить"
   subscriptions:

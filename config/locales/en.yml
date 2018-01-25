@@ -42,6 +42,8 @@ en:
       logout: "Log out"
       profile: "Profile"
   categories:
+    index:
+      new_category: "Create"
     show:
       upload_new_image: "Upload"
   subscriptions:

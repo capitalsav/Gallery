@@ -1,5 +1,13 @@
 #categories-page.section.md-padding
   .container
+    - if user_signed_in?
+      .row
+        .col-xs-12.col-sm-4.col-sm-offset-4
+          .row
+            .col-xs-12
+              .p.text-center
+                = link_to(new_category_path, {class: 'btn btn-primary btn-new-category'}, :method => :get) do
+                  = t('.new_category')
     .row.categories-page-row
       - @categories_with_images.each do |category|
         -if category[:image_key].present?
