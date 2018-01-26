@@ -86,3 +86,15 @@ body {
   color: white;
   font-size: 14px;
 }
+
+//=========================BODY=========================
+.flash-notification {
+  z-index: 10;
+  position: absolute;
+}
+
+.alert-alert {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}

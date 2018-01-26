@@ -98,6 +98,9 @@
     margin-right: 15%;
     margin-top: 10%;
   }
+  .sign-up-errors {
+    margin-top: -100px;
+  }
 }
 
 
@@ -108,6 +111,9 @@
     margin-right: auto;
     margin-top: 20%;
   }
+  .sign-up-errors {
+    margin-top: -200px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -117,6 +123,9 @@
     margin-right: auto;
     margin-top: 20%;
   }
+  .sign-up-errors {
+    margin-top: -220px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -125,6 +134,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
+  }
+  .sign-up-errors {
+    margin-top: -150px;
   }
 }
 

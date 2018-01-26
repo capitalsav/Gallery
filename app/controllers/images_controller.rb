@@ -29,7 +29,8 @@ class ImagesController < ApplicationController
     @image = @category.images.build(image_params)
     respond_to do |format|
       if @image.save!
-        format.html { redirect_to single_category_image_path(@category.slug, @image.id), notice: 'Image was successfully created.' }
+        flash[:success] = t('.image_created')
+        format.html { redirect_to single_category_image_path(@category.slug, @image.id)}
         format.json { render :show, status: :created, location: @image }
       else
         format.html { redirect_back fallback_location: root_path }

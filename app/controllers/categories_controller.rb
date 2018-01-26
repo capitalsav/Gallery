@@ -30,7 +30,8 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(category_params)
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        flash[:success] = t('.category_created')
+        format.html { redirect_to @category}
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
