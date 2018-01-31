@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     @image = Image.find(params[:image_id])
     @like = current_user.likes.create!(image_id: params[:image_id])
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
   end
@@ -17,7 +17,7 @@ class LikesController < ApplicationController
     @image = Image.find(params[:image_id])
     current_user.likes.find_by(image_id: params[:image_id]).destroy!
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
   end

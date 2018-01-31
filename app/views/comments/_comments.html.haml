@@ -1,10 +1,14 @@
 - @image.comments.each do |comment|
-  .thumbnail.comment-thumb
-    .row
-      .col-xs-12
-        -if comment.user.avatar.present?
-          = image_tag "#{comment.user.avatar.small_thumb.url}", :class => "img-circle comment-avatar"
-        %span.span-comment-name
-          = comment.user.name
-        %span.span-comment-text
-          = comment.text
+  .media
+    .media-left
+      -if comment.user.avatar.present?
+        = image_tag "#{comment.user.avatar.small_thumb.url}", :class => 'media-object'
+      -else
+        = image_tag '/assets/default_avatar_small.png', class: 'media-object'
+    .media-body
+      %h4.media-heading
+        = comment.user.name
+        %span.time
+          = comment.created_at.to_formatted_s(:long)
+      %p
+        = comment.text
