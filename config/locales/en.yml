@@ -31,7 +31,7 @@
 en:
   layouts:
     header:
-      company_name: "Gallery"
+      company_name: "LOGO"
       categories: "Categories"
       all_categories: "All categories"
       images: "Images"
@@ -42,8 +42,12 @@ en:
       logout: "Log out"
       profile: "Profile"
   categories:
-    show_images:
-      upload_new_image: "Upload new image"
+    index:
+      new_category: "Create"
+    show:
+      upload_new_image: "Upload"
+    create:
+      category_created: "Category was successfully created"
   subscriptions:
     subscribe:
       subscribe: "Subscribe"
@@ -58,4 +62,6 @@ en:
       likes: "Likes"
     unlike:
       likes: "Likes"
-
+  images:
+    create:
+      image_created: "Image was successfully created"
