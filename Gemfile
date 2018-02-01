@@ -68,6 +68,8 @@ gem 'friendly_id'
 
 gem 'font-awesome-rails'
 
+gem 'redis'
+
 
 
 group :development, :test do
