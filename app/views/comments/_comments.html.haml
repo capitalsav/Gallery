@@ -1,0 +1,14 @@
+- @image.comments.each do |comment|
+  .media
+    .media-left
+      -if comment.user.avatar.present?
+        = image_tag "#{comment.user.avatar.small_thumb.url}", :class => 'media-object'
+      -else
+        = image_tag '/assets/default_avatar_small.png', class: 'media-object'
+    .media-body
+      %h4.media-heading
+        = comment.user.name
+        %span.time
+          = comment.created_at.to_formatted_s(:long)
+      %p
+        = comment.text

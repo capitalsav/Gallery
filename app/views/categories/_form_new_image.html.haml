@@ -1,0 +1,8 @@
+= form_for @image, url: create_image_path, html: {multipart: true, method: :post, remote: true } do |form|
+  #new_image_error_explanation
+  .field
+    = form.label :image
+    %br/
+    = form.file_field :image
+  .actions
+    = form.submit

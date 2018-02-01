@@ -1,15 +1,22 @@
 class CategoriesController < ApplicationController
+
+  skip_before_action :user_click, only: [:create, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories_with_images = Category.all.map do |category| {category_key: category, image_key: category.images.order("RANDOM()").first} end
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @images = Category.friendly.find(params[:id]).images
+    if user_signed_in?
+      @subscription = @category.subscriptions.find_by(user_id: current_user.id)
+    end
   end
 
   # GET /categories/new
@@ -17,18 +24,14 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  # GET /categories/1/edit
-  def edit
-  end
-
   # POST /categories
   # POST /categories.json
   def create
-    @category = Category.new(category_params)
-
+    @category = current_user.categories.build(category_params)
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        flash[:success] = t('.category_created')
+        format.html { redirect_to @category}
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -37,51 +40,14 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /categories/1
-  # PATCH/PUT /categories/1.json
-  def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /categories/1
-  # DELETE /categories/1.json
-  def destroy
-    @category.destroy
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  def show_images
-    @images = Category.find_by_name(params[:name]).images
-  end
-
-  def show_one_image
-    images = Category.find_by_name(params[:name]).images
-    images.each do |image|
-      if image.id == params[:image_id].to_i
-        @image = image
-      end
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :user_id)
+      params.require(:category).permit(:name)
     end
 end

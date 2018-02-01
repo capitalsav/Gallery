@@ -10,22 +10,53 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
+    columns do
+      column do
+        panel "Recent Categories" do
+          table_for Category.order("id desc").limit(5).map do
+            column("Category"){|category| link_to "#{category.name}", category_path(category.name) }
+          end
+        end
+      end
+    end
+
+    columns do
+      column do
+        panel "Recent Comments" do
+          table_for Comment.joins(:user).joins(:image).order("id desc").limit(5).map do
+            column("Text"){|comment| comment.text}
+            column("User"){|comment| comment.user.email}
+            column("Image"){|comment| link_to "Image link", single_category_image_path(comment.image.category.name, comment.image.id) }
+          end
+        end
+      end
+    end
+
+    columns do
+      column do
+        panel "Recent Images" do
+          table_for Image.joins(:user).order("id desc").limit(10).map do
+            column("Image"){|image| image_tag image.image.small_thumb.url}
+            column("Image Path"){|image| link_to "#{image.image}", single_category_image_path(image.category.name, image.id) }
+          end
+        end
+      end
+    end
+
     # columns do
     #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
+    #     panel "Recent Images" do
+    #       user_actions = UserAction.order('id DESC')
+    #       paginated_collection(user_actions.page(params[:page]).per(15), download_links: false) do
+    #         table_for(collection, sortable: false) do |action|
+    #           column :id
+    #           column ("User"){|action| action.user.email}
+    #           column ("Action Type"){|action| action.action_type}
+    #           column ("Url"){|action| "localhost:3000#{action.url}"}
+    #           column ("Timestamp"){|action| action.created_at.strftime("%Y-%m-%d %H:%M:%S")}
+    #           column ("TimeZone"){|action| Time.zone.name}
     #         end
     #       end
-    #     end
-    #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
     #     end
     #   end
     # end

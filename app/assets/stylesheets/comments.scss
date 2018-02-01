@@ -1,0 +1,19 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#comments{
+  max-height: 280px;
+  overflow-x: hidden;
+  margin-top: 15px;
+}
+
+/*comments page*/
+.main-row-comments {
+  height: 80vh;
+  overflow-x: hidden;
+}
+
+#all-comments {
+  max-height: 600px;
+  overflow-x: hidden;
+}

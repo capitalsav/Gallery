@@ -1,23 +1,13 @@
-= form_for @image, html: {multipart: true } do |form|
-  - if @image.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@image.errors.count, "error")
-        prohibited this pet from being saved:
-      %ul
-        - @image.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = form.label :category_id
-    %br/
-    = form.number_field :category_id
-  .field
-    = form.label :image
-    %br/
-    = form.file_field :image
-    - if form.object.image?
-      = image_tag form.object.image
-      = form.label :remove_image
-      = form.check_box :remove_image
-  .actions
-    = form.submit
+.row.main-new-image
+  = form_for @image, url: create_image_path, html: {multipart: true, method: :post, remote: true } do |form|
+    #new_image_error_explanation
+    .field
+      .p.text-center
+        %span.btn.btn-new-image{id: 'new-image-button'}
+          %p#p-new-image-button Choose image
+          \#{form.file_field :image, id: 'new-image-id'}
+    .field
+      = form.hidden_field :user_id, value: current_user.id
+    .actions
+      .p.text-center
+        = form.submit 'Upload', class: 'btn button-upload-img', id: 'btn-upload-img'

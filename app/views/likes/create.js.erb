@@ -1,0 +1,2 @@
+$("#like_form").html("<%= escape_javascript(render('likes/unlike',{@image => @image})) %>")
+$("#like_form_category<%=@image.id %>").html("<%= escape_javascript(render('likes/unlike',{@image => @image})) %>")

@@ -26,3 +26,8 @@
 
 #Ignore uploaded images
 /public/uploads
+
+.env
+
+#Ignore uploaded images by rspec tests
+/spec/support/uploads
