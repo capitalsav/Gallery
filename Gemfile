@@ -66,6 +66,8 @@ gem 'resque'
 # gem for user friendly urls
 gem 'friendly_id'
 
+gem 'font-awesome-rails'
+
 
 
 group :development, :test do
