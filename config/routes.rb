@@ -1,3 +1,5 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
 
   scope "(:locale)", locale: /en|ru/ do
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
         confirmations: 'users/confirmations',
         registrations: 'users/registrations'
     }
+    # mount Resque::Server.new, :at => "/resque" #use for development
 
     root  'static_pages#home'
     resources :categories, only: [:show, :new, :index, :create] do

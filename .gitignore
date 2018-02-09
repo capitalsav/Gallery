@@ -31,3 +31,8 @@
 
 #Ignore uploaded images by rspec tests
 /spec/support/uploads
+
+config/database.yml
+config/application.yml
+
+nohup.out

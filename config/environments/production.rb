@@ -28,7 +28,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -89,7 +89,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'secret-dawn-39793.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'ec2-18-220-93-174.us-east-2.compute.amazonaws.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address: "smtp.gmail.com",
@@ -100,4 +100,6 @@ Rails.application.configure do
       user_name: ENV["GMAIL_USERNAME"],
       password: ENV["GMAIL_PASSWORD"]
   }
+
+  config.serve_static_assets = true
 end
