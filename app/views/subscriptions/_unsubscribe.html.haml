@@ -1,2 +1,2 @@
-= link_to'<i class="glyphicon glyphicon glyphicon-remove btn btn-danger">Unsubscribe</i>'.html_safe, category_subscription_path(@category.id, @subscription.id), :method => :delete, remote: true
-
+= form_for(@category, url: category_subscription_path(@category.id, @subscription.id), html: { method: :delete }, remote: true) do |f|
+  = f.submit t('.unsubscribe'), class: "btn btn-danger subscribe-button", id: 'unsubscribe-btn'

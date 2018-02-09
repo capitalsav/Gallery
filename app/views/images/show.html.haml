@@ -1,21 +1,33 @@
-.row
-  .col-xs-12
-    .thumbnail
-      = image_tag "#{@image.image}"
-      .caption
-      - if user_signed_in?
-        = render "likes/like_form"
-      - if !user_signed_in?
-        .likes-count
-          %span
-            = @likes_count
-            Likes
-  - if user_signed_in?
-    .col-xs-12
-      .thumbnail.comments-box-thumbnail
-        = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
-          = f.text_area :text, class: "input-comment"
-          %div{align: "right"}
-            = f.submit "Comment", class: "btn btn-primary btn-comment"
-        = render "comments/comments"
-
+#image.section.md-padding
+  .container
+    .row
+      %main#main.col-md-9
+        .image
+          .image-img
+            = image_tag "#{@image.image}", class: 'img-responsive'
+          .image-content
+            %ul.image-meta
+              %li
+                %i.fa.fa-user>
+                =@image.user.name
+              %li
+                %i.fa.fa-clock-o>
+                =time_ago_in_words(@image.created_at)
+              %li
+                %i.fa.fa-comments>
+                = @image.comments.size
+              - if user_signed_in?
+                %li
+                  = render "likes/like_form"
+          .image-comments
+            %h3.title
+              = @image.comments.size
+              Comments
+            .image
+              .col-xs-12.main-comments-container
+                = render "comments/comments_container"
+          - if user_signed_in?
+            = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
+              = f.text_area :text, class: "input-comment", id: 'input-comment'
+              %div{align: "right"}
+                = f.submit "Comment", class: "btn btn-comment", id: 'btn-comment'

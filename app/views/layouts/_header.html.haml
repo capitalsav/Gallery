@@ -1,37 +1,43 @@
-%header.nav.navbar.navbar-inverse
-  .container-fluid
+%header.nav.navbar.navbar-default.header-main
+  .container
     .navbar-header
       %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "Capitalsav", root_path, class: "navbar-brand"
+      = link_to t('.company_name'), root_path, class: "navbar-brand header-text", id: 'company-name'
 
     #myNavbar.collapse.navbar-collapse
-      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.navbar-right
         %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            Categories
+          %a.dropdown-toggle.header-text{"data-toggle" => "dropdown", :href => "#", id: 'header-dropdown-categories'}
+            = t('.categories')
             %span.caret
           %ul.dropdown-menu
             - @top_categories.each do |category|
               %li
-                = link_to "#{category.name}", single_category_path(category.slug), :method => :get
+                = link_to "#{category.name}", category_path(category.slug), :method => :get
             %li.divider
             %li
-              = link_to "All Categories", categories_path
+              = link_to t('.all_categories'), categories_path, id: 'header-all-categories', class: 'header-text'
         %li
-          = link_to "Images", images_path
+          = link_to t('.images'), images_path, id: 'header-images', class: 'header-text'
         %li
-          = link_to "Comments", comments_path
-      %ul.nav.navbar-nav.navbar-right
+          = link_to t('.comments'), comments_path, id: 'header-comments', class: 'header-text'
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", id: 'header-dropdown-lang', class: 'header-text'}
+            = t('.language')
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to 'en', root_path(locale: :en), id: 'header-en', class: 'header-text'
+            %li= link_to 'ru', root_path(locale: :ru), id: 'header-ru', class: 'header-text'
         - if user_signed_in?
           %li
-            = link_to '<i class="glyphicon glyphicon-user"></i> Profile'.html_safe, profile_path
+            = link_to t('.profile'), profile_path, {class: 'header-text', id: 'header-profile'}
           %li
-            = link_to '<i class="glyphicon glyphicon-log-out"></i> Log out'.html_safe, destroy_user_session_path, method: :delete
+            = link_to t('.logout'), destroy_user_session_path, method: :delete, id: 'header-logout', class: 'header-text'
         - else
           %li
-            = link_to '<i class="glyphicon glyphicon-user"></i> SignUp'.html_safe, new_user_registration_path
+            = link_to t('.sign_up'), new_user_registration_path, {class: 'header-text', id: 'header-sign-up'}
           %li
-            = link_to '<i class="glyphicon glyphicon-log-in"></i> Login'.html_safe, new_user_session_path
+            = link_to t('.login'), new_user_session_path, {class: 'header-text', id: 'header-login'}

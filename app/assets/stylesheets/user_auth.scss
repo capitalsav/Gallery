@@ -1,4 +1,4 @@
-/*Login SignUp*/
+//=========================LOGIN SIGN_UP PAGE=========================
 .main-auth-row {
   min-height: 80vh;
 }
@@ -17,8 +17,10 @@
   font-size: 14px;
   border: none;
   height: 45px;
-  background: #EEEEEE;
   padding-left: 10px;
+  color: #354052;
+  background: #F4F4F4;
+  border-bottom: 2px solid #EEE;
 }
 
 .button-auth {
@@ -28,15 +30,16 @@
   margin-right: 10%;
   margin-bottom: 10px;
   height: 45px;
+  background: #6195FF;
+  color: #FFF;
 }
 
 .auth-users-shared-links {
   text-align: center;
   margin-top: 10px;
-}
-
-.auth-users-shared-links a{
-  color: #76b852;
+  a {
+    color: #868F9B;
+  }
 }
 
 .auth-form-bottom-empty-space {
@@ -51,6 +54,7 @@
   margin-right: 10%;
   border-radius: 0 !important;
   margin-bottom: 10px !important;
+  background-color: #EEE;
 }
 
 .btn-file input[type=file] {
@@ -94,6 +98,9 @@
     margin-right: 15%;
     margin-top: 10%;
   }
+  .sign-up-errors {
+    margin-top: -100px;
+  }
 }
 
 
@@ -104,6 +111,9 @@
     margin-right: auto;
     margin-top: 20%;
   }
+  .sign-up-errors {
+    margin-top: -200px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -113,6 +123,9 @@
     margin-right: auto;
     margin-top: 20%;
   }
+  .sign-up-errors {
+    margin-top: -220px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -121,6 +134,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
+  }
+  .sign-up-errors {
+    margin-top: -150px;
   }
 }
 
@@ -165,6 +181,7 @@
   margin-bottom: 10px;
 }
 
+
 @media (min-width: 0px) and (max-width: 767px) {
   .g-recaptcha {
     transform:scale(0.77);
@@ -173,3 +190,75 @@
     -webkit-transform-origin:0 0;
   }
 }
+
+//=========================FORGOT PASSWORD PAGE=========================
+.forgot-pwd-main {
+  min-height: 80vh;
+}
+
+.forgot-pwd-input {
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: none;
+  height: 45px;
+  padding-left: 10px;
+  color: #354052;
+  background: #F4F4F4;
+  border-bottom: 2px solid #EEE;
+}
+
+.btn-forgot-pwd {
+  border-radius: 0 !important;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px !important;
+  height: 45px;
+  background: #6195FF;
+  color: #FFF;
+}
+//=========================END FORGOT PASSWORD PAGE=========================
+
+//=========================DEVISE ERROR=========================
+.devise-errors {
+  color: red;
+  margin-top: 20px;
+}
+//=========================END DEVISE ERROR=========================
+
+//=========================RESEND PASSWORD CONFIRMATION PAGE=========================
+.forgot-pwd-main {
+  min-height: 80vh;
+}
+
+.resend-pwd-confirmation-input {
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: none;
+  height: 45px;
+  padding-left: 10px;
+  color: #354052;
+  background: #F4F4F4;
+  border-bottom: 2px solid #EEE;
+}
+
+.btn-resend-pwd-confirmation {
+  border-radius: 0 !important;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10px !important;
+  height: 45px;
+  background: #6195FF;
+  color: #FFF;
+}
+//=========================RESEND PASSWORD CONFIRMATION PAGE=========================
+

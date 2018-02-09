@@ -1,25 +1,29 @@
 class LikesController < ApplicationController
 
+  skip_before_action :user_click, only: [:create, :destroy]
   before_action :authenticate_user!, only: [:create, :destroy]
+  after_action :save_action_like, only: [:create]
 
   def create
     @image = Image.find(params[:image_id])
-    @like = current_user.like_image!(params[:image_id])
-    @likes_count = @image.likes.count
+    @like = current_user.likes.create!(image_id: params[:image_id])
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
-    UserAction.save_user_action(current_user.id, UserAction::ACTION_LIKES, single_category_image_path(@image.category.name))
   end
 
   def destroy
     @image = Image.find(params[:image_id])
-    current_user.unlike_image(params[:image_id])
-    @likes_count = @image.likes.count
+    current_user.likes.find_by(image_id: params[:image_id]).destroy!
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
+  end
+
+  private
+  def save_action_like
+    save_user_action(UserAction::ACTION_LIKES)
   end
 end

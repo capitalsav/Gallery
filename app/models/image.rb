@@ -6,7 +6,7 @@ class Image < ApplicationRecord
   has_many :comments, foreign_key: "image_id", dependent: :destroy
   has_many :commenting_users, :through => :comments, :source => :user
   mount_uploader :image, ImageUploader
-  validates_processing_of :image
+  validates_presence_of :image
   validate :image_size_validation
 
   private
