@@ -106,3 +106,7 @@ ru:
             encrypted_password:
               blank: 'не может быть пустым'
               too_short: 'не может быть меньше 6 символов'
+            current_password:
+              blank: 'не может быть пустым'
+            password_confirmation:
+              confirmation: 'не может быть пустым'
