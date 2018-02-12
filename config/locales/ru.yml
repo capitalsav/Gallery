@@ -14,8 +14,10 @@ ru:
   categories:
     index:
       new_category: "Создать"
+      category: 'Категория'
     show:
       upload_new_image: "Загрузить"
+      category: 'Категория'
     create:
       category_created: "Категория была успешно создана"
   subscriptions:
@@ -94,7 +96,19 @@ ru:
   images:
     create:
       image_created: "Изображение было успешно создано"
+    show:
+      comments: 'Комментарии'
+      send_comment: 'Прокомментировать'
   activerecord:
+    attributes:
+      user:
+        password: 'Пароль'
+        encrypted_password: 'Пароль'
+        current_password: 'Текущий пароль'
+        password_confirmation: 'Подтверждение пароля'
+        name: 'Имя'
+      category:
+        name: 'Имя'
     errors:
       models:
         user:
@@ -110,3 +124,18 @@ ru:
               blank: 'не может быть пустым'
             password_confirmation:
               confirmation: 'не может быть пустым'
+        category:
+          attributes:
+            name:
+              blank: 'не может быть пустым'
+  users:
+    registrations:
+      profile:
+        update_account: 'Обновить'
+        cancel_my_account: 'Удалить мой аккаунт'
+        choose_avatar: 'Выберите аватар'
+      new:
+        choose_avatar: 'Выберите аватар'
+  comments:
+    index:
+      comments: 'Комментариев всего:'

@@ -22,7 +22,7 @@
           .image-comments
             %h3.title
               = @image.comments.size
-              Comments
+              = t('.comments')
             .image
               .col-xs-12.main-comments-container
                 = render "comments/comments_container"
@@ -30,4 +30,4 @@
             = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
               = f.text_area :text, class: "input-comment", id: 'input-comment'
               %div{align: "right"}
-                = f.submit "Comment", class: "btn btn-comment", id: 'btn-comment'
+                = f.submit t('.send_comment'), class: "btn btn-comment", id: 'btn-comment'

@@ -22,7 +22,8 @@
               .categories-page-content
                 %h3
                   =category[:category_key].name
-                %span Category
+                %span
+                  = t('.category')
         -else
           .col-sm-4
             .categories-page
@@ -35,4 +36,5 @@
               .categories-page-content
                 %h3
                   =category[:category_key].name
-                %span Category
+                %span
+                  = t('.category')
