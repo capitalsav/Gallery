@@ -43,6 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def show_create_notification
+    return unless User.last.email == params[:user][:email]
     flash.delete(:notice)
     set_flash_message(:success, :signed_up_but_unconfirmed)
   end
