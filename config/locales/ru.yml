@@ -94,3 +94,15 @@ ru:
   images:
     create:
       image_created: "Изображение было успешно создано"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'не может быть пустым'
+            password:
+              blank: 'не может быть пустым'
+            encrypted_password:
+              blank: 'не может быть пустым'
+              too_short: 'не может быть меньше 6 символов'
