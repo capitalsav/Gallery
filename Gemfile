@@ -66,7 +66,12 @@ gem 'resque'
 # gem for user friendly urls
 gem 'friendly_id'
 
+
+#gem for recaptcha
+gem 'recaptcha', require: 'recaptcha/rails'
+
 gem 'font-awesome-rails'
+
 
 gem 'redis'
 
