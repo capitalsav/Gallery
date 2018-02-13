@@ -5,11 +5,11 @@ $(document).ready ->
   setTimeout (->
     $('#flash').remove()
     return
-  ), 5000
+  ), 10000
   return
 document.addEventListener 'turbolinks:load', ->
   setTimeout (->
     $('#flash').remove()
     return
-  ), 5000
+  ), 10000
   return
