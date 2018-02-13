@@ -3,7 +3,7 @@
     .image-comments
       %h3.title
         = @comments.size
-        Comments
+        = t('.comments')
       .image
         .col-xs-12.main-comments-container#all-comments
           -@comments.each do |comment|
