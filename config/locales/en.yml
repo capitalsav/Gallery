@@ -44,8 +44,10 @@ en:
   categories:
     index:
       new_category: "Create"
+      category: 'Category'
     show:
       upload_new_image: "Upload"
+      category: 'Category'
     create:
       category_created: "Category was successfully created"
   subscriptions:
@@ -65,3 +67,17 @@ en:
   images:
     create:
       image_created: "Image was successfully created"
+    show:
+      comments: 'Comments'
+      send_comment: 'Comment'
+  users:
+    registrations:
+      profile:
+        update_account: 'Update'
+        cancel_my_account: 'Cancel my account'
+        choose_avatar: 'Choose avatar'
+      new:
+        choose_avatar: 'Choose avatar'
+  comments:
+    index:
+      comments: 'Comments:'

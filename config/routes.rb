@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     devise_scope :user do
       match '/profile', to: 'users/registrations#profile', via: 'get'
     end
-    devise_for :users, controllers: {
+    devise_for :users, skip: :omniauth_callbacks, controllers: {
         sessions: 'users/sessions',
         confirmations: 'users/confirmations',
         registrations: 'users/registrations'
@@ -28,4 +28,5 @@ Rails.application.routes.draw do
     match '/comments', to: 'comments#index', via: 'get', as: 'comments'
     match '/categories/:id/create_image', to: 'images#create', via: 'post', as: 'create_image'
   end
+  devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 end

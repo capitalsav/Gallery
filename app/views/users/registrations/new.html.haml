@@ -12,7 +12,9 @@
             = f.password_field :password, placeholder: 'password', class: 'auth-input', id: 'sign-up-password-input'
             = f.password_field :password_confirmation, placeholder: 'password confirmation', class: 'auth-input', id: 'sign-up-password-confirm-input'
             %span.btn.btn-file{id: 'avatar-sign-up-button'}
-              %p#p-sign-up-avatar Choose avatar
+              %p#p-sign-up-avatar
+                %span
+                  = t('.choose_avatar')
               \#{f.file_field :avatar, id: 'avatar-sign-up'}
             = f.submit 'Sign Up', class: 'btn button-auth', id: 'btn-sign-up'
           %p.auth-users-shared-links
