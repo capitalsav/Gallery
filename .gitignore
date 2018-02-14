@@ -36,3 +36,6 @@ config/database.yml
 config/application.yml
 
 nohup.out
+
+.ruby-gemset
+.ruby-version
