@@ -9,7 +9,11 @@ class ImageMailer < ApplicationMailer
     @image = image
     @user = user
     mail(to: @user['email'],
-         subject: 'New image was successfully uploaded' \
-          ' to your subscribed category')
+         subject:
+          <<~HEREDOC
+            New image was successfully
+            uploaded to your subscribed category
+          HEREDOC
+        )
   end
 end
