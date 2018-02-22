@@ -96,7 +96,11 @@ ru:
     create:
       image_created: "Изображение было успешно создано"
     show:
-      comments: 'Комментарии'
+      comments:
+        zero: 'Комментариев'
+        one: 'Комментарий'
+        few: 'Комментария'
+        other: 'Комментариев'
       send_comment: 'Прокомментировать'
   activerecord:
     attributes:

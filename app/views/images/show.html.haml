@@ -22,7 +22,14 @@
           .image-comments
             %h3.title
               = @image.comments.size
-              = t('.comments')
+              - if @image.comments.size == 0
+                = t('.comments.zero', count: 0)
+              - elsif (@image.comments.size % 10) == 1
+                = t('.comments.one')
+              - elsif ((@image.comments.size % 10) > 4 && (@image.comments.size % 10) <= 9) || (@image.comments.size > 9 && @image.comments.size < 21) || ((@image.comments.size.to_s.chars.length > 1) && (@image.comments.size % 10 == 0))
+                = t('.comments.other')
+              - elsif (@image.comments.size % 10) > 1 && (@image.comments.size % 10) < 5
+                = t('.comments.few')
             .image
               .col-xs-12.main-comments-container
                 = render "comments/comments_container"

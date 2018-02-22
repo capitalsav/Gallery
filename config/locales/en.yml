@@ -67,7 +67,11 @@ en:
     create:
       image_created: "Image was successfully created"
     show:
-      comments: 'Comments'
+      comments:
+        zero: 'Comments'
+        one: 'Comment'
+        few: 'Comments'
+        other: 'Comments'
       send_comment: 'Comment'
   users:
     registrations:
