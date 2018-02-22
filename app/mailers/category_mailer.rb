@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Mailer for notifications about category subscription
 class CategoryMailer < ApplicationMailer
   default from: 'notifications@capitalsav.com'
 

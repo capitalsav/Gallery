@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for likes on images
 class LikesController < ApplicationController
 
   skip_before_action :user_click, only: [:create, :destroy]
