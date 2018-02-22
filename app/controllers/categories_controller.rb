@@ -14,9 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @images = Category.friendly.find(params[:id]).images
-    if user_signed_in?
-      @subscription = @category.subscriptions.find_by(user_id: current_user.id)
-    end
+    @subscription = @category.subscriptions.find_by(user_id: current_user.id) if user_signed_in?
   end
 
   # GET /categories/new
