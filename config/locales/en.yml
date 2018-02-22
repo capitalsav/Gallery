@@ -51,9 +51,8 @@ en:
     create:
       category_created: "Category was successfully created"
   subscriptions:
-    subscribe:
-      subscribe: "Subscribe"
-    unsubscribe:
+    subscription_form:
+      subscribe: 'Subscribe'
       unsubscribe: "Unsubscribe"
   likes:
     like_category_img:

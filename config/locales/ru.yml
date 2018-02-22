@@ -21,9 +21,8 @@ ru:
     create:
       category_created: "Категория была успешно создана"
   subscriptions:
-    subscribe:
+    subscription_form:
       subscribe: "Подписаться"
-    unsubscribe:
       unsubscribe: "Отписаться"
   likes:
     like_category_img:
