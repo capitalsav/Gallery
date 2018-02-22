@@ -20,9 +20,8 @@
                 %li
                   = render "likes/like_form"
           .image-comments
-            %h3.title
-              = @image.comments.size
-              = t('.comments', count: @image.comments.size)
+            #image-comments
+              = render "comments/comments_count"
             .image
               .col-xs-12.main-comments-container
                 = render "comments/comments_container"

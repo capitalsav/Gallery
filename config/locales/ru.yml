@@ -96,11 +96,6 @@ ru:
     create:
       image_created: "Изображение было успешно создано"
     show:
-      comments:
-        zero: 'Комментариев'
-        one: 'Комментарий'
-        few: 'Комментария'
-        other: 'Комментариев'
       send_comment: 'Прокомментировать'
   activerecord:
     attributes:
@@ -142,3 +137,9 @@ ru:
   comments:
     index:
       comments: 'Комментариев всего:'
+    comments_count:
+      comments:
+        zero: 'Комментариев'
+        one: 'Комментарий'
+        few: 'Комментария'
+        other: 'Комментариев'
