@@ -27,7 +27,7 @@
               .col-xs-12.main-comments-container
                 = render "comments/comments_container"
           - if user_signed_in?
-            = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), html: { method: :post }, remote: true) do |f|
+            = form_for(current_user.comments.build(image_id: @image.id), url: image_comments_path(@image.id), remote: true) do |f|
               = f.text_area :text, class: "input-comment", id: 'input-comment'
               %div{align: "right"}
                 = f.submit t('.send_comment'), class: "btn btn-comment", id: 'btn-comment'
