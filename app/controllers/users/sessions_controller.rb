@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::SessionsController < Devise::SessionsController
   skip_before_action :user_click, only: [:create, :destroy]
   before_action :save_action_sign_out, only: [:destroy]

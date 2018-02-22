@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
 
   skip_before_action :user_click, only: [:create, :update, :destroy]
@@ -29,11 +31,9 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:success] = t('.category_created')
-        format.html { redirect_to @category}
-        format.json { render :show, status: :created, location: @category }
+        format.html { redirect_to @category }
       else
         format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end

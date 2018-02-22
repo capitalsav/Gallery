@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Controller for authentication via social networks
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2

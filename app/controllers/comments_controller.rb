@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
 
   skip_before_action :user_click, only: [:create]

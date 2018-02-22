@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoryMailer < ApplicationMailer
   default from: 'notifications@capitalsav.com'
 

@@ -48,7 +48,6 @@ class ImagesController < ApplicationController
         format.html do
           redirect_to single_category_image_path(@category.slug, @image.id)
         end
-        format.json { render :show, status: :created, location: @image }
       else
         format.html { redirect_back fallback_location: root_path }
         format.js {}

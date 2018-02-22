@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Controller for perform actions with user subscriptions on categories
 class SubscriptionsController < ApplicationController
   skip_before_action :user_click, only: [:create, :destroy]

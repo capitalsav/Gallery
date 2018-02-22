@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserAction < ApplicationRecord
   ACTION_SIGN_IN = 'sign_in'
   ACTION_SIGN_OUT = 'sign_out'

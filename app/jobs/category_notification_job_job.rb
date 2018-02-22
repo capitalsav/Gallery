@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoryNotificationJobJob
   @queue = :category_notification
 
