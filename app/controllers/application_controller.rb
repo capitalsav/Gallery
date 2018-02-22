@@ -32,8 +32,6 @@ class ApplicationController < ActionController::Base
 
   private
   def user_click
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id,  UserAction::ACTION_NAVIGATION, request.original_url)
-    end
+    UserAction.save_user_action(current_user.id,  UserAction::ACTION_NAVIGATION, request.original_url) if user_signed_in?
   end
 end
