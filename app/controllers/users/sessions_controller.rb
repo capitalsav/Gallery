@@ -22,6 +22,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   private
+
   def save_action_sign_in
     if user_signed_in?
       flash.delete(:notice)

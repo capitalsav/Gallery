@@ -13,7 +13,7 @@ class UserAction < ApplicationRecord
   validates :url, presence: true
 
   def self.save_user_action(user_id, action_type, url)
-    action_params = {"user_id" => user_id, "action_type" => action_type, "url" => url}
+    action_params = { 'user_id' => user_id, "action_type" => action_type, 'url' => url }
     user_action = UserAction.new(action_params)
     user_action.save
   end

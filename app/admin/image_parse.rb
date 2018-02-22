@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register_page "image_parse" do
   require 'open-uri'
   require 'timeout'

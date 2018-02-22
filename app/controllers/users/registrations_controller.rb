@@ -32,7 +32,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile
-    #TODO remove redundant code @user
     @user = current_user
     UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, profile_path)
   end

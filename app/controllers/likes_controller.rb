@@ -25,6 +25,7 @@ class LikesController < ApplicationController
   end
 
   private
+
   def save_action_like
     save_user_action(UserAction::ACTION_LIKES)
   end

@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def save_action_comment
     save_user_action(UserAction::ACTION_COMMENTS)
   end
