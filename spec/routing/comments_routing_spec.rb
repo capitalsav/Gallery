@@ -1,5 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+require 'rails_helper'
 RSpec.describe 'routes for Comments', type: :routing do
   it 'routes /comments to comments#index' do
     expect(get: '/comments').to route_to(

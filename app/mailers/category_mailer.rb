@@ -7,12 +7,7 @@ class CategoryMailer < ApplicationMailer
   def subscribe_email(user, category)
     @user = user
     @category = category
-    mail(to: @user['email'],
-         subject:
-          <<~HEREDOC
-            You have successfully
-            subscribe on new category
-          HEREDOC
-        )
+    subject = 'You have successfully subscribe on new category'
+    mail(to: @user['email'], subject: subject)
   end
 end

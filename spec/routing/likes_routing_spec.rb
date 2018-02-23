@@ -1,5 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+require 'rails_helper'
 RSpec.describe 'routes for Likes', type: :routing do
   it 'routes /images/:image_id/likes to likes#create' do
     expect(post: '/images/1/likes').to route_to(

@@ -2,10 +2,9 @@
 
 # Controller for likes on images
 class LikesController < ApplicationController
-
-  skip_before_action :user_click, only: [:create, :destroy]
-  before_action :authenticate_user!, only: [:create, :destroy]
-  after_action :save_action_like, only: [:create]
+  skip_before_action :user_click, only: %i[create destroy]
+  before_action :authenticate_user!, only: %i[create destroy]
+  after_action :save_action_like, only: :create
 
   def create
     @image = Image.find(params[:image_id])

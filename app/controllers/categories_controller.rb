@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
+# Controller for categories of images, which was uploaded by users
 class CategoriesController < ApplicationController
-
-  skip_before_action :user_click, only: [:create, :update, :destroy]
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :user_click, only: %i[create update destroy]
+  before_action :set_category, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories_with_images = Category.all.map do |category| {category_key: category, image_key: category.images.order("RANDOM()").first} end
+    @categories_with_images = Category.all.map do |category|
+      { category_key: category, image_key: category.images.order('RANDOM()').first }
+    end
   end
 
   # GET /categories/1

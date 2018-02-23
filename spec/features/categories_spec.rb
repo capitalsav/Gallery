@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'UserSignin', type: :feature do
   before(:each) do
     @user = create(:user)

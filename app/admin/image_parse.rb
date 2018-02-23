@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-ActiveAdmin.register_page "image_parse" do
+# Admin image parse page
+ActiveAdmin.register_page 'image_parse' do
   require 'open-uri'
   require 'timeout'
 
@@ -12,9 +13,7 @@ ActiveAdmin.register_page "image_parse" do
         @images = []
         Nokogiri::HTML(open(params['images-url'])).xpath('//img').each do |img|
           image = img['src']
-          if image[0...4] == VALID_URL_FIRST_CHARACTERS
-            @images.push(image)
-          end
+          @images.push(image) if image[0...4] == VALID_URL_FIRST_CHARACTERS
         end
         @categories = Category.all
         @users = User.all
@@ -26,10 +25,9 @@ ActiveAdmin.register_page "image_parse" do
   end
 
   content do
-    form action: "image_parse/parse", method: :get do |f|
+    form action: 'image_parse/parse', method: :get do |f|
       f.input :url_field, type: :text, name: 'images-url'
       f.input :submit, type: :submit
     end
   end
 end
-

@@ -1,5 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+require 'rails_helper'
 RSpec.describe 'routes for Subscriptions', type: :routing do
   it 'routes /categories/:category_id/subscriptions to subscriptions#create' do
     expect(post: '/categories/1/subscriptions').to route_to(

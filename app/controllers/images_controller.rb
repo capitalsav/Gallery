@@ -2,17 +2,11 @@
 
 # Controller for images
 class ImagesController < ApplicationController
-  skip_before_action :user_click, only: [:create,
-                                         :edit,
-                                         :update,
-                                         :destroy,
-                                         :upload_remote]
-  before_action :set_image, only: [:edit, :update, :destroy]
+  skip_before_action :user_click, only: %i[create edit update destroy upload_remote]
+  before_action :set_image, only: %i[edit update destroy]
   before_action :set_show, only: :show
   before_action :set_category, only: :create
-  before_action :authenticate_user!,
-                only: [:new, :create],
-                unless: :current_admin_user
+  before_action :authenticate_user!, only: %i[new create], unless: :current_admin_user
 
   # GET /images
   # GET /images.json
@@ -41,13 +35,10 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.save!
         Resque.enqueue(NewImageNotificationJob,
-                       @image.category,
-                       @image,
+                       @image.category, @image,
                        Category.find(@category.id).subscribed_users)
         flash[:success] = t('.image_created')
-        format.html do
-          redirect_to single_category_image_path(@category.slug, @image.id)
-        end
+        format.html { redirect_to single_category_image_path(@category.slug, @image.id) }
       else
         format.html { redirect_back fallback_location: root_path }
         format.js {}

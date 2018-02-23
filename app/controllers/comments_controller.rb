@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
+# Controller for user comments to image
 class CommentsController < ApplicationController
-
-  skip_before_action :user_click, only: [:create]
-  before_action :authenticate_user!, only: [:create]
-  after_action :save_action_comment, only: [:create]
+  skip_before_action :user_click, only: :create
+  before_action :authenticate_user!, only: :create
+  after_action :save_action_comment, only: :create
 
   def index
     @comments = Comment.joins(:user).order('comments.created_at DESC')
