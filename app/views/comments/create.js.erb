@@ -1,1 +1,4 @@
-$("#comments").html("<%= escape_javascript(render('comments/comments',{@image => @image})) %>")
+$("#comments").html("<%= escape_javascript(render('comments/comments',{@image => @image})) %>");
+$("#input-comment").val('');
+$("#comments").scrollTop(10000000000);
+$("#image-comments").html("<%= escape_javascript(render('comments/comments_count',{@image => @image})) %>");

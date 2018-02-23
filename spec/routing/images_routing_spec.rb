@@ -1,5 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+require 'rails_helper'
 RSpec.describe 'routes for Images', type: :routing do
   it 'routes /images to images#index' do
     expect(get: '/images').to route_to(

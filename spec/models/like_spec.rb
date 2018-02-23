@@ -1,5 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+require 'rails_helper'
 RSpec.describe Like, type: :model do
   it 'belong to User' do
     expect(subject).to belong_to(:user).class_name('User')

@@ -33,7 +33,6 @@ ActiveRecord::Migration.maintain_test_schema!
 # This code make able to sign_in user in rspec requests tests
 
 module DeviseRequestSpecHelpers
-
   include Warden::Test::Helpers
 
   def sign_in(resource_or_scope, resource = nil)
@@ -46,14 +45,9 @@ module DeviseRequestSpecHelpers
     scope = Devise::Mapping.find_scope!(resource_or_scope)
     logout(scope)
   end
-
 end
 
-
-
-
 RSpec.configure do |config|
-
   Capybara.javascript_driver = :selenium
   Capybara.ignore_hidden_elements = true
   Capybara.register_driver :selenium do |app|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Images', type: :feature do
@@ -58,8 +60,8 @@ describe 'Images', type: :feature do
       id: Category.last.slug.to_s, image_id: Image.last.id.to_s
     )}")
 
-    visit images_path
-    expect(page).to have_current_path(images_path)
+    click_on 'header-images'
+    expect(page).to have_current_path("/en#{images_path}")
     expect(page).to have_css('.images')
   end
 end

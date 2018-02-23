@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -50,11 +52,11 @@ RSpec.describe User, type: :model do
   end
 
   it 'return like if user liked image' do
-    expect(@user.likes?(@image)).to eq(@like)
+    expect(@user.likes(@image)).to eq(@like)
   end
 
   it 'return subscription if user subscribed on category' do
-    expect(@user.subscribed?(@category.id)).to eq(@subscription)
+    expect(@user.subscribed(@category.id)).to eq(@subscription)
   end
 
   describe '#email' do

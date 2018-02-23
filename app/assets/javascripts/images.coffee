@@ -7,11 +7,3 @@ document.addEventListener 'turbolinks:load', ->
     $("#p-new-image-button").html(fileName)
     return
   return
-
-$(document).ready ->
-  $('#new-image-id').change (e) ->
-    fileName = e.target.files[0].name
-    $("#p-new-image-button").html(fileName)
-    return
-  return
-

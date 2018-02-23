@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# Main application controller
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception, only: Proc.new { |c| c.request.format.json? }
+  protect_from_forgery with: :exception, only: proc { |c| c.request.format.json? }
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :get_top_categories
+  before_action :top_categories
   before_action :set_locale
   before_action :user_click
 
@@ -12,18 +15,26 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
-  def get_top_categories
-    @top_categories = Category.
-        left_outer_joins(:images).distinct.select('categories.*, COUNT(images.*) AS images_count').
-        left_outer_joins(:liked_categoties).distinct.select('categories.*, COUNT(likes.*) AS likes_count').
-        left_outer_joins(:commented_categories).distinct.select('categories.*, COUNT(comments.*) AS comments_count').
-        group('categories.id').order("images_count DESC").order("likes_count DESC").order("comments_count DESC").limit(5)
+
+  def top_categories
+    @top_categories =
+      Category
+      .left_outer_joins(:images).distinct.select('categories.*, COUNT(images.*) AS images_count')
+      .left_outer_joins(:liked_categoties).distinct.select('categories.*, COUNT(likes.*) AS likes_count')
+      .left_outer_joins(:commented_categories).distinct.select('categories.*, COUNT(comments.*) AS comments_count')
+      .group('categories.id')
+      .order('images_count DESC')
+      .order('likes_count DESC')
+      .order('comments_count DESC').limit(5)
   end
+
   protected
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation, :avatar])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :current_password, :avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email password password_confirmation avatar])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
+    devise_parameter_sanitizer.permit(:account_update,
+                                      keys: %i[name email password password_confirmation current_password avatar])
   end
 
   def save_user_action(action_type)
@@ -31,9 +42,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def user_click
-    if user_signed_in?
-      UserAction.save_user_action(current_user.id,  UserAction::ACTION_NAVIGATION, request.original_url)
-    end
+    UserAction.save_user_action(current_user.id,
+                                UserAction::ACTION_NAVIGATION,
+                                request.original_url) if user_signed_in?
   end
 end

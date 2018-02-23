@@ -6,7 +6,7 @@
           .row
             .col-xs-12
               .p.text-center
-                = link_to(new_category_path, {class: 'btn btn-primary btn-new-category', id: 'btn-new-category'}, :method => :get) do
+                = link_to(new_category_path, {class: 'btn btn-primary btn-new-category', id: 'btn-new-category'}) do
                   = t('.new_category')
     .row.categories-page-row
       - @categories_with_images.each do |category|

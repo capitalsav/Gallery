@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for actions sign_up user, edit, destroy, and profile page
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -30,9 +33,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile
-    #TODO remove redundant code @user
     @user = current_user
-    UserAction.save_user_action(current_user.id, UserAction::ACTION_NAVIGATION, profile_path)
+    UserAction.save_user_action(current_user.id,
+                                UserAction::ACTION_NAVIGATION,
+                                profile_path)
   end
 
   private

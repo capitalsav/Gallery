@@ -51,9 +51,8 @@ en:
     create:
       category_created: "Category was successfully created"
   subscriptions:
-    subscribe:
-      subscribe: "Subscribe"
-    unsubscribe:
+    subscription_form:
+      subscribe: 'Subscribe'
       unsubscribe: "Unsubscribe"
   likes:
     like_category_img:
@@ -68,7 +67,6 @@ en:
     create:
       image_created: "Image was successfully created"
     show:
-      comments: 'Comments'
       send_comment: 'Comment'
   users:
     registrations:
@@ -81,3 +79,9 @@ en:
   comments:
     index:
       comments: 'Comments:'
+    comments_count:
+      comments:
+        zero: 'Comments'
+        one: 'Comment'
+        few: 'Comments'
+        other: 'Comments'
