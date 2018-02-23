@@ -22,14 +22,7 @@ RSpec.describe ImageMailer, type: :mailer do
       ImageMailer.new_image_email(@category, @image, @user).deliver
     end
     mail = ActionMailer::Base.deliveries.last
-    # expect(mail.subject).to eq('New image was successfully ' \
-    #   'uploaded to your subscribed category')
-    expect(mail.subject).to eq(
-      <<~HEREDOC
-        New image was successfully
-        uploaded to your subscribed category
-      HEREDOC
-    )
+    expect(mail.subject).to eq('New image was successfully uploaded to your subscribed category')
     expect(mail.to).to eq([@user.email])
     expect(mail.from).to eq(['notifications@capitalsav.com'])
   end

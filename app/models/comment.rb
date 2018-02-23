@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
+# Model of comment to image
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :image
-  validates :user_id, presence: true
-  validates :image_id, presence: true
-  validates :text, presence: true
+  validates :user_id, :image_id, :text, presence: true
 end

@@ -1,5 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+require 'rails_helper'
 RSpec.describe 'routes for Categories', type: :routing do
   it 'routes /categories/ to categories#index' do
     expect(get: '/categories/').to route_to(

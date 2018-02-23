@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UserAction, type: :model do
-
   before(:each) do
     @user = create(:user)
     @url = 'http://localhost/categories'

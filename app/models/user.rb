@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Model of User for current web app
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -18,19 +20,19 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true, length: { minimum: 6 }
 
-  def likes?(image_id)
+  def likes(image_id)
     likes.find_by(image_id: image_id)
   end
 
-  def subscribed?(category_id)
+  def subscribed(category_id)
     subscriptions.find_by(category_id: category_id)
   end
 
   def self.from_omniauth(auth)
     user = User.new
     user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
-    user.name = auth.info.name   # assuming the user model has a name
+    user.password = Devise.friendly_token[0, 20]
+    user.name = auth.info.name # assuming the user model has a name
     user.avatar = auth.info.image # assuming the user model has an image
     # If you are using confirmable and the provider(s) you use validate emails,
     # uncomment the line below to skip the confirmation emails.

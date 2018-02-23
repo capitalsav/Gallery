@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Job for mailers category subscription notifications
 class CategoryNotificationJobJob
   @queue = :category_notification
 

@@ -1,1 +1,1 @@
-$("#subscribe_form").html("<%= escape_javascript(render('subscriptions/unsubscribe',{@category => @category, @subscription => @subscription})) %>")
+$("#subscribe_form").html("<%= escape_javascript(render('subscriptions/subscription_form',{@category => @category, @subscription => @subscription})) %>")

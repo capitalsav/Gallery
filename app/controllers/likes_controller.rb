@@ -1,8 +1,10 @@
-class LikesController < ApplicationController
+# frozen_string_literal: true
 
-  skip_before_action :user_click, only: [:create, :destroy]
-  before_action :authenticate_user!, only: [:create, :destroy]
-  after_action :save_action_like, only: [:create]
+# Controller for likes on images
+class LikesController < ApplicationController
+  skip_before_action :user_click, only: %i[create destroy]
+  before_action :authenticate_user!, only: %i[create destroy]
+  after_action :save_action_like, only: :create
 
   def create
     @image = Image.find(params[:image_id])
@@ -23,6 +25,7 @@ class LikesController < ApplicationController
   end
 
   private
+
   def save_action_like
     save_user_action(UserAction::ACTION_LIKES)
   end
