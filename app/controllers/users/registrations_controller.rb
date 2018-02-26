@@ -30,6 +30,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # DELETE /resource
   def destroy
     super
+    flash.delete(:notice)
+    set_flash_message(:success, :destroyed)
   end
 
   def profile

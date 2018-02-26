@@ -20,11 +20,11 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true, length: { minimum: 6 }
 
-  def likes(image_id)
+  def likes_image(image_id)
     likes.find_by(image_id: image_id)
   end
 
-  def subscribed(category_id)
+  def subscribed_image(category_id)
     subscriptions.find_by(category_id: category_id)
   end
 
