@@ -38,6 +38,5 @@ config/application.yml
 nohup.out
 
 .ruby-gemset
-.ruby-version
 
 .rubocop.yml
