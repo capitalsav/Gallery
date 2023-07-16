@@ -83,7 +83,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
-  # gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'faker'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'geckodriver-helper'
   gem 'database_cleaner'
