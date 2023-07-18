@@ -1,1 +1,2 @@
-$("#subscribe_form").html("<%= escape_javascript(render('subscriptions/subscription_form',{@category => @category, @subscription => @subscription})) %>")
+$("#subscribe_form").empty()
+$("#subscribe_form").html("<%= escape_javascript(render partial: 'subscriptions/unsubscribe_button', locals: { category:  @subscription.category, subscription: @subscription }) %>")
