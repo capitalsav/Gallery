@@ -20,8 +20,11 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true, length: { minimum: 6 }
 
-  def likes(image_id)
-    likes.find_by(image_id: image_id)
+  def like_this_image?(image_id)
+    images = self.likes.map { |like| like.image }
+    images.each { |image| return true if image.id == image_id }
+
+    false
   end
 
   def subscribed(category_id)
