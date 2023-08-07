@@ -1,5 +1,10 @@
+-##like_form
+-#  - if current_user.like_this_image?(@image.id)
+-#    = render "likes/unlike"
+-#  - else
+-#    = render "likes/like"
 #like_form
   - if current_user.like_this_image?(@image.id)
-    = render "likes/unlike"
+    = render partial: 'likes/unlike_button', locals: { image:  @image, like: @like }
   - else
-    = render "likes/like"
+    = render partial: 'likes/like_button', locals: { image:  @image }
